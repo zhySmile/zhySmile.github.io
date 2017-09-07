@@ -101,13 +101,13 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-09-06</span>
-            <span class="time">12:32:15</span>
+            <span class="time">13:07:30</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/技术分享-U3D/">技术分享 U3D</a>
+<a href="/categories/技术分享U3D/">技术分享U3D</a>
 </span>
           
         </div>
@@ -116,16 +116,113 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/U3D/">#U3D</a>
+<a class="tag" href="/tags/U3D-UGUI-Drag/">#U3D UGUI Drag</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>  我也不知道说点啥，么么哒</p>
-<p>  ##么么哒</p>
-<p>  #开心开心<br>  啦啦啦啦啦啦</p>
+          <p>  上班第一天，不多说直入正题。今天要写的是Unity3D的UGUI对Image的拖拽，并且始终悬浮在屏幕的边缘。<br>闲话少说直接上代码<br>DragListener.cs</p>
+<pre><code>using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections;
+class DragListener : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{ 
+
+    private Vector2 halfSize;//距离边缘的位置
+    private bool isPopupBeingDragged = false;//是否开始拖拽
+    private IEnumerator moveToPosCoroutine = null;//自己做的一个简单的移动动画
+    void Awake()
+    {
+        popupTransform = transform;
+    }
+    void Start()
+    {
+        halfSize = ( (RectTransform) popupTransform ).sizeDelta * 0.5f * popupTransform.root.localScale.x;
+    }
+    // 一个简单的移动动画
+    private IEnumerator MoveToPosAnimation( Vector3 targetPos )
+    {
+        float modifier = 0f;
+        Vector3 initialPos = popupTransform.position;
+        while( modifier &lt; 1f )
+        {
+            modifier += 4f * Time.deltaTime;
+            popupTransform.position = Vector3.Lerp( initialPos, targetPos, modifier );
+
+            yield return null;
+        }
+    }
+
+    public void OnBeginDrag( PointerEventData data )//u3d方法 开始拖拽
+    {
+        isPopupBeingDragged = true;
+    }
+
+
+    public void OnDrag( PointerEventData data )//u3d方法 拖拽中
+    {
+        popupTransform.position = data.position;
+    }
+
+
+    public void OnEndDrag( PointerEventData data )//u3d方法结束拖拽
+    {
+        int screenWidth = Screen.width;
+        int screenHeight = Screen.height;
+        Vector3 pos = popupTransform.position;
+
+        // Find distances to all four edges
+        //{{{检查窗口距离四个屏幕边缘的距离  开始
+
+        float distToLeft = pos.x;
+        float distToRight = Mathf.Abs( pos.x - screenWidth );
+
+        float distToBottom = Mathf.Abs( pos.y );
+        float distToTop = Mathf.Abs( pos.y - screenHeight );
+
+        //计算水平距离左右哪边近
+        float horDistance = Mathf.Min( distToLeft, distToRight );
+        //计算垂直距离那边近
+        float vertDistance = Mathf.Min( distToBottom, distToTop );
+
+        //从水平和垂直距离近的两个值中取更近的
+        if( horDistance &lt; vertDistance )
+        {
+            if( distToLeft &lt; distToRight)//如果左小于右
+            {
+                pos = new Vector3(halfSize.x, pos.y, 0f);//向左移
+            }
+            else
+            {
+                pos = new Vector3(screenWidth - halfSize.x, pos.y, 0f);//向右移动
+            }
+        }
+        else
+        {
+            if ( distToBottom &lt; distToTop)
+            {
+                pos = new Vector3(pos.x, halfSize.y, 0f);//下移
+            }
+            else
+            {
+                pos = new Vector3(pos.x, screenHeight - halfSize.y, 0f);//上移
+            }
+
+        }
+
+        if( moveToPosCoroutine != null )
+            StopCoroutine( moveToPosCoroutine );
+
+        moveToPosCoroutine = MoveToPosAnimation( pos );//移动动画
+        StartCoroutine( moveToPosCoroutine );
+
+        isPopupBeingDragged = false;
+    }
+}
+</code></pre><p>  把脚本挂到Image物体上即可，大家有更好的方法也可以留言，不懂得地方，看到回复肯定会解答的</p>
 
         </div>
       </div>
