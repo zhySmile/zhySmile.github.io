@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="zhySmile">
 <meta property="og:description" content="用心创作，做不一样的自己 动态生成二维码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T09:29:20.567Z">
+<meta property="og:updated_time" content="2017-09-08T09:45:17.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="U3D 动态生成二维码">
 <meta name="twitter:description" content="用心创作，做不一样的自己 动态生成二维码">
@@ -256,7 +256,64 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>用心创作，做不一样的自己 动态生成二维码<br><a id="more"></a><br>前一段时间开发项目中需要用到二维码识别登录，项目做完之后没来得及整理 所有现在先整理一下希望对你们有所帮助<br>1.准备工作<br>需要下载个工具 –  链接：<a href="http://pan.baidu.com/s/1nvsogUt" target="_blank" rel="external">http://pan.baidu.com/s/1nvsogUt</a> 密码：80bg<br>将下载下来的文件放到你的Unity工程里面 （整理好的）<br>2.创建一个脚本CreateCode2D</p>
+        <p>用心创作，做不一样的自己 动态生成二维码<br><a id="more"></a><br>前一段时间开发项目中需要用到二维码识别登录，项目做完之后没来得及整理 所有现在先整理一下希望对你们有所帮助<br>1.准备工作<br>需要下载个工具 –  链接：<a href="http://pan.baidu.com/s/1nvsogUt" target="_blank" rel="external">http://pan.baidu.com/s/1nvsogUt</a> 密码：80bg<br>将下载下来的文件放到你的Unity工程里面 （整理好的）</p>
+<p>2.这是生成二维码的脚本</p>
+<pre><code>using UnityEngine;
+using ZXing;
+using ZXing.QrCode;
+using System.IO;
+using System.Collections.Generic;
+
+namespace Tools.Code2D
+{
+    public class BuildCode2D : Singleton&lt;BuildCode2D&gt;
+    {
+        public Sprite CreateSpriteCode2D(string code_2d_message)
+        {
+            Texture2D code_2d = CreateTextureCode2D(code_2d_message);
+            return Sprite.Create(code_2d, new Rect(0, 0, code_2d.width, code_2d.height), Vector2.zero);
+        }
+        public Texture2D CreateTextureCode2D(string code_2d_message)
+        {
+            Texture2D code_2d = new Texture2D(256, 256);
+            if (code_2d_message != null)
+            {
+                var color32 = Encode(code_2d_message, code_2d.width, code_2d.height);
+                code_2d.SetPixels32(color32);
+                code_2d.Apply();
+                byte[] bytes = code_2d.EncodeToPNG();//把二维码转成byte数组，然后进行输出保存为png图片就可以保存下来生成好的二维码  
+                if (!Directory.Exists(Application.dataPath + &quot;/Code2D&quot;))//创建生成目录，如果不存在则创建目录  
+                {
+                    Directory.CreateDirectory(Application.dataPath + &quot;/Code2D&quot;);
+                }
+                string fileName = Application.dataPath + &quot;/Code2D/&quot; + code_2d_message + &quot;.png&quot;;
+                File.WriteAllBytes(fileName, bytes);
+            }
+            return code_2d;
+        }
+        private static Color32[] Encode(string textForEncoding, int width, int height)
+        {
+            Dictionary&lt;EncodeHintType, object&gt; hints = new Dictionary&lt;EncodeHintType, object&gt;();
+            hints.Add(EncodeHintType.CHARACTER_SET, &quot;UTF-8&quot;);
+            var writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new QrCodeEncodingOptions
+                {
+                    Height = height,
+                    Width = width,
+                },
+                Encoder = new QRCodeWriter
+                {
+
+                }
+            };
+            var bitMatrix = writer.Encoder.encode(textForEncoding, BarcodeFormat.QR_CODE, width, height, hints);
+            return writer.Write(bitMatrix);
+        }
+    }
+}
+</code></pre><p>3.创建一个脚本CreateCode2D</p>
 <pre><code>using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -348,7 +405,7 @@ public class CreateCode2D : MonoBehaviour {
         <p><span>本文标题:</span><a href="/2017/09/08/buildCode2D/">U3D 动态生成二维码</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2017年09月08日 - 16时43分</p>
-        <p><span>最后更新:</span>2017年09月08日 - 17时29分</p>
+        <p><span>最后更新:</span>2017年09月08日 - 17时45分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/08/buildCode2D/" title="U3D 动态生成二维码">http://yoursite.com/2017/09/08/buildCode2D/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/08/buildCode2D/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
