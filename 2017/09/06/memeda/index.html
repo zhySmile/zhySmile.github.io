@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="zhySmile">
 <meta property="og:description" content="实现Unity3D的UGUI拖拽并且悬浮在屏幕边缘的功能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-07T13:47:43.055Z">
+<meta property="og:updated_time" content="2017-09-08T02:39:09.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="U3D UI拖拽悬浮功能">
 <meta name="twitter:description" content="实现Unity3D的UGUI拖拽并且悬浮在屏幕边缘的功能">
@@ -263,7 +263,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 class DragListener : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 { 
-
+    private Transform popupTransform;
     private Vector2 halfSize;//距离边缘的位置
     private bool isPopupBeingDragged = false;//是否开始拖拽
     private IEnumerator moveToPosCoroutine = null;//自己做的一个简单的移动动画
@@ -414,7 +414,7 @@ class DragListener : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         <p><span>本文标题:</span><a href="/2017/09/06/memeda/">U3D UI拖拽悬浮功能</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2017年09月06日 - 20时57分</p>
-        <p><span>最后更新:</span>2017年09月07日 - 21时47分</p>
+        <p><span>最后更新:</span>2017年09月08日 - 10时39分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/06/memeda/" title="U3D UI拖拽悬浮功能">http://yoursite.com/2017/09/06/memeda/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/06/memeda/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
