@@ -5,18 +5,18 @@
   
   <title>C# 设计模式 | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于HeadFirst设计模式">
+  <meta name="description" content="基于HeadFirst设计模式之策略模式">
 <meta name="keywords" content="C#,设计模式,策略模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C# 设计模式">
 <meta property="og:url" content="http://yoursite.com/2017/09/12/HeadFirst/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="基于HeadFirst设计模式">
+<meta property="og:description" content="基于HeadFirst设计模式之策略模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-12T08:27:31.149Z">
+<meta property="og:updated_time" content="2017-09-12T10:35:04.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# 设计模式">
-<meta name="twitter:description" content="基于HeadFirst设计模式">
+<meta name="twitter:description" content="基于HeadFirst设计模式之策略模式">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -140,7 +140,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/Drag/" style="font-size: 10px;">Drag</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/Texture/" style="font-size: 10px;">Texture</a> <a href="/tags/U3D/" style="font-size: 20px;">U3D</a> <a href="/tags/UGUI/" style="font-size: 20px;">UGUI</a> <a href="/tags/策略模式/" style="font-size: 10px;">策略模式</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+                        <a href="/tags/C/" style="font-size: 15px;">C#</a> <a href="/tags/Drag/" style="font-size: 10px;">Drag</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/Texture/" style="font-size: 10px;">Texture</a> <a href="/tags/U3D/" style="font-size: 20px;">U3D</a> <a href="/tags/UGUI/" style="font-size: 20px;">UGUI</a> <a href="/tags/策略模式/" style="font-size: 10px;">策略模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a>
                     </div>
                 </section>
                 
@@ -252,7 +252,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>基于HeadFirst设计模式<br><a id="more"></a><br>最近在看一本书 HeadFirst设计模式感觉还不错，下面会对这本书所涉及到的几种设计模式分析一下<br>下面书中所介绍的第一个设计模式 入门级的  策略模式<br>策略模式定义了算法族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户<br>下面具体根据例子来讲解 （针对超类型编程）<br>模拟鸭子应用<br>1.鸭子fly swim quack…<br>首先根据鸭子的行为设计两个接口 FlyBehavior  QuackBehavior</p>
+        <p>基于HeadFirst设计模式之策略模式<br><a id="more"></a><br>最近在看一本书 HeadFirst设计模式感觉还不错，下面会对这本书所涉及到的几种设计模式分析一下<br>下面书中所介绍的第一个设计模式 入门级的  策略模式<br>策略模式定义了算法族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户<br>下面具体根据例子来讲解 （针对超类型编程）<br>模拟鸭子应用<br>1.鸭子fly swim quack…<br>首先根据鸭子的行为设计两个接口 FlyBehavior  QuackBehavior</p>
 <pre><code>interface FlyBehavior
 {
     void Flying();
@@ -449,7 +449,7 @@ public void SetQuackBehavior(QuackBehavior qb)
         <p><span>本文标题:</span><a href="/2017/09/12/HeadFirst/">C# 设计模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2017年09月12日 - 14时44分</p>
-        <p><span>最后更新:</span>2017年09月12日 - 16时27分</p>
+        <p><span>最后更新:</span>2017年09月12日 - 18时35分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/12/HeadFirst/" title="C# 设计模式">http://yoursite.com/2017/09/12/HeadFirst/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/12/HeadFirst/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -464,6 +464,15 @@ public void SetQuackBehavior(QuackBehavior qb)
 
 
 <nav id="article-nav">
+  
+    <a href="/2017/09/12/HeadFirst-Subject-Observer/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          C# 设计模式
+        
+      </div>
+    </a>
   
   
     <a href="/2017/09/08/buildCode2D/" id="article-nav-older" class="article-nav-link-wrap">
@@ -544,7 +553,9 @@ public void SetQuackBehavior(QuackBehavior qb)
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/09/12/HeadFirst-Subject-Observer/" title="上一篇: C# 设计模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -553,7 +564,7 @@ public void SetQuackBehavior(QuackBehavior qb)
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/HeadFirst/">C# 设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/buildCode2D/">U3D 动态生成二维码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/copy/">U3D UGUI中将Text的内容复制到粘贴板</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/memeda/">U3D UI拖拽悬浮功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/HeadFirst-Subject-Observer/">C# 设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/HeadFirst/">C# 设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/buildCode2D/">U3D 动态生成二维码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/copy/">U3D UGUI中将Text的内容复制到粘贴板</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/memeda/">U3D UI拖拽悬浮功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>All tags | zhySmile</title>
+  <title>C# 设计模式 | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一枚码农的生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="All tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="基于HeadFirst设计模式之观察者模式">
+<meta name="keywords" content="C#,设计模式,观察者模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# 设计模式">
+<meta property="og:url" content="http://yoursite.com/2017/09/12/HeadFirst-Subject-Observer/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="一枚码农的生活">
+<meta property="og:description" content="基于HeadFirst设计模式之观察者模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-06T07:01:26.488Z">
+<meta property="og:updated_time" content="2017-09-12T11:33:58.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="All tags">
-<meta name="twitter:description" content="一枚码农的生活">
+<meta name="twitter:title" content="C# 设计模式">
+<meta name="twitter:description" content="基于HeadFirst设计模式之观察者模式">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -41,7 +42,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -209,11 +210,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HeadFirst-Subject-Observer" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2017-09-06T06:01:33.000Z" itemprop="datePublished">2017-09-06</time>
+      <a href="/2017/09/12/HeadFirst-Subject-Observer/" class="article-date">
+      <time datetime="2017-09-12T10:34:01.129Z" itemprop="datePublished">2017-09-12</time>
 </a>
     </div>
   
@@ -226,7 +227,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      All tags
+      C# 设计模式
     </h1>
   
 
@@ -234,8 +235,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享之设计模式/">技术分享之设计模式</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -243,110 +252,67 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
+        <p>基于HeadFirst设计模式之观察者模式<br><a id="more"></a><br>好，我们接着上一篇继续介绍下一个设计模式 观察者模式<br>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，他的所有依赖的对象都会受到通知并自动更新</p>
+<p>首先写我们的接口 被观察者 和 观察者<br>    //被观察者接口<br>    public interface Subject<br>    {<br>        //注册观察者<br>        void RegisterObserver(Observer o);<br>        //删除观察者<br>        void RemoveObserver(Observer o);<br>        //当被观察者状态发生改变时，调用此方法 通知所有的观察者<br>        void NotifyObserver();<br>    }<br>    //观察者接口<br>    public interface Observer<br>    {<br>        void Update();//所有的观察者都必须实现此方法，来实现观察者的接口<br>        void Display()；//当观察者需要作出响应的时候调用此方法<br>    }</p>
+<p>创建一个被观察者对象</p>
+<pre><code>public class WeatherData:Subject
+{
+    public ArrayList observers //存储所有的观察者，在构造中初始化
+
+    public WeatherData()
+    {
+        observers=new ArrayList();
     }
-    #container .article .article-title {
-        padding-right: 0;
+
+     public void NotifyObserver()//通知所有观察者发生改变
+    {
+        for (int i = 0; i &lt; observers.Count; i++)
+        {
+            Observer o = (Observer)observers[i];
+            o.Update();
+        }
     }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
+
+    public void RegisterObserver(Observer o)//注册观察者
+    {
+        observers.Add(o);
     }
-    .article-header:hover {
-        border-left: none;
+
+    public void RemoveObserver(Observer o)//删除观察者
+    {
+        int index = observers.IndexOf(o);
+        if (observers.Count&gt;0)
+        {
+            observers.Remove(index);
+        }
     }
-    .article-title {
-        font-size: 1.6em
+}
+</code></pre><p>创建一个观察者对象<br>    //实现Observer接口，和displayelement接口<br>    public class ConditionDisplay : Observer<br>    {<br>        private Subject weatherdata;<br>        private string weathername;<br>        public CurrentConditionDisplay(Subject s,string name)//构造器需要subject对象 和观察者的名字<br>        {<br>            weatherdata = s;//保存被观察者只是为了以后我们可能会取消注册，会比较方便<br>            weatherdata.RegisterObserver(this);<br>            this.weathername = name;<br>        }<br>        public void Remove()//取消注册<br>        {<br>            waterdata.RemoveObserver(this);<br>        }<br>        public void Display()//接到通知后自己做出相应的响应<br>        {<br>            Console.WriteLine(watername + “发出相应的改变”);<br>        }</p>
+<pre><code>    public void Update()//接受观察者的通知
+    {
+        Console.WriteLine(watername+&quot; 已经接到通知&quot;);
+        Display();//这个方法目前先在Update方法中调用（详细讲解请看MVC模式）
     }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+}
+</code></pre><p>创建一个测试程序</p>
+<pre><code>public static void Station
+{
+    public static void Main(string[] arg)
+    {
+        Subject subject=new weatherdata();
+        Observer o1 = new CurrentConditionDisplay(subject,&quot;小明&quot;);
+        Observer o2 = new CurrentConditionDisplay(subject,&quot;小红&quot;);
+        Observer o3 = new CurrentConditionDisplay(subject,&quot;小李&quot;);
+        subject.NotifyObserver();
+        o2.Remove();
+        Console.WriteLine(&quot;________________________________&quot;);
+        subject.NotifyObserver();
 
 
-    <!-- Tag Cloud Page -->
-    <hr>
-    <br>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术分享U3D/">技术分享U3D</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术分享之设计模式/">技术分享之设计模式</a><span class="category-list-count">2</span></li></ul>
+    }
+}
+</code></pre><p>以上就是观察者模式了，上面涉及到Display() 方法调用的时机，了解MVC模式之后会更清楚，后续会更新其他的设计模式，敬请期待…</p>
 
-    <p class="count"></p>
-
-    <div class="tags">
-        <a href="/tags/C/" style="font-size: 25.5px; color: #404040">C#</a> <a href="/tags/Drag/" style="font-size: 16px; color: #808080">Drag</a> <a href="/tags/Text/" style="font-size: 16px; color: #808080">Text</a> <a href="/tags/Texture/" style="font-size: 16px; color: #808080">Texture</a> <a href="/tags/U3D/" style="font-size: 35px; color: #000">U3D</a> <a href="/tags/UGUI/" style="font-size: 35px; color: #000">UGUI</a> <a href="/tags/策略模式/" style="font-size: 16px; color: #808080">策略模式</a> <a href="/tags/观察者模式/" style="font-size: 16px; color: #808080">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 25.5px; color: #404040">设计模式</a>
-    </div>
-    <style>
-        .category-list li{
-            display: inline-block;
-            margin: 0 1em .5em 0;
-            padding: 4px;
-            border: 1px solid lightgray;
-            font-size: 1.2em;
-        }
-        .category-list a {
-            color: gray;
-        }
-        .category-list-item:hover a {
-            color: gray;
-            text-decoration: none;
-        }
-        .category-list-count {
-            margin-left: 2px;
-            font-size: .9em;
-        }
-        .article-entry ul li:before{
-            display: none;
-        }
-        .article-inner  {
-            text-align: center;
-        }
-        .tags {
-            max-width: 40em;
-            margin: 2em auto;
-            margin-top: 0em;
-        }
-        .tags a {
-            margin-right: 1em;
-            line-height: 65px;
-            border-bottom: 1px solid gray;
-            white-space: nowrap;
-        }
-        .tags a:hover {
-            border-bottom: 2px solid black;
-            text-decoration: none;
-            font-style: italic;
-        }
-        #count > span {
-            margin: auto .2em;
-            font-weight: bold;
-        }
-    </style>
-
-    <!-- Count tags and categories -->
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <p id="count">
-            已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-            共计<span><script>document.write($(".tags > a").length)</script></span>个标签。
-    </p>
-    <script>
-        $('#count').appendTo('.count');
-    </script>
-
-
-          
-        
       
       
         <div class="page-reward">
@@ -400,10 +366,67 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/09/12/HeadFirst-Subject-Observer/">C# 设计模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
+        <p><span>发布时间:</span>2017年09月12日 - 18时34分</p>
+        <p><span>最后更新:</span>2017年09月12日 - 19时33分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/12/HeadFirst-Subject-Observer/" title="C# 设计模式">http://yoursite.com/2017/09/12/HeadFirst-Subject-Observer/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/12/HeadFirst-Subject-Observer/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/12/HeadFirst/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C# 设计模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -421,7 +444,55 @@
 
 
 
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'zhySmile',
+      repo: 'zhySmile.github.io',
+      oauth: {
+        client_id: 'e8fd4f45c5f750cd68d0',
+        client_secret: 'e8cf72d4510d44ab33f3748438c0ba58ebe1a48e',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/09/12/HeadFirst/" title="下一篇: C# 设计模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/HeadFirst-Subject-Observer/">C# 设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/HeadFirst/">C# 设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/buildCode2D/">U3D 动态生成二维码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/copy/">U3D UGUI中将Text的内容复制到粘贴板</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/memeda/">U3D UI拖拽悬浮功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
