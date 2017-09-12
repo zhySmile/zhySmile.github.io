@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="zhySmile">
 <meta property="og:description" content="基于HeadFirst设计模式之观察者模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-12T11:33:58.688Z">
+<meta property="og:updated_time" content="2017-09-12T12:55:18.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# 设计模式">
 <meta name="twitter:description" content="基于HeadFirst设计模式之观察者模式">
@@ -253,8 +253,23 @@
       
           
         <p>基于HeadFirst设计模式之观察者模式<br><a id="more"></a><br>好，我们接着上一篇继续介绍下一个设计模式 观察者模式<br>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，他的所有依赖的对象都会受到通知并自动更新</p>
-<p>首先写我们的接口 被观察者 和 观察者<br>    //被观察者接口<br>    public interface Subject<br>    {<br>        //注册观察者<br>        void RegisterObserver(Observer o);<br>        //删除观察者<br>        void RemoveObserver(Observer o);<br>        //当被观察者状态发生改变时，调用此方法 通知所有的观察者<br>        void NotifyObserver();<br>    }<br>    //观察者接口<br>    public interface Observer<br>    {<br>        void Update();//所有的观察者都必须实现此方法，来实现观察者的接口<br>        void Display()；//当观察者需要作出响应的时候调用此方法<br>    }</p>
-<p>创建一个被观察者对象</p>
+<p>首先写我们的接口 被观察者 和 观察者<br>    //被观察者接口</p>
+<pre><code>public interface Subject
+{
+    //注册观察者
+    void RegisterObserver(Observer o);
+    //删除观察者
+    void RemoveObserver(Observer o);
+    //当被观察者状态发生改变时，调用此方法 通知所有的观察者
+    void NotifyObserver();
+}
+//观察者接口
+public interface Observer
+{
+    void Update();//所有的观察者都必须实现此方法，来实现观察者的接口
+    void Display()；//当观察者需要作出响应的时候调用此方法
+}
+</code></pre><p>创建一个被观察者对象</p>
 <pre><code>public class WeatherData:Subject
 {
     public ArrayList observers //存储所有的观察者，在构造中初始化
@@ -287,8 +302,27 @@
         }
     }
 }
-</code></pre><p>创建一个观察者对象<br>    //实现Observer接口，和displayelement接口<br>    public class ConditionDisplay : Observer<br>    {<br>        private Subject weatherdata;<br>        private string weathername;<br>        public CurrentConditionDisplay(Subject s,string name)//构造器需要subject对象 和观察者的名字<br>        {<br>            weatherdata = s;//保存被观察者只是为了以后我们可能会取消注册，会比较方便<br>            weatherdata.RegisterObserver(this);<br>            this.weathername = name;<br>        }<br>        public void Remove()//取消注册<br>        {<br>            waterdata.RemoveObserver(this);<br>        }<br>        public void Display()//接到通知后自己做出相应的响应<br>        {<br>            Console.WriteLine(watername + “发出相应的改变”);<br>        }</p>
-<pre><code>    public void Update()//接受观察者的通知
+</code></pre><p>创建一个观察者对象<br>    //实现Observer接口，和displayelement接口 </p>
+<pre><code>public class ConditionDisplay : Observer
+{
+    private Subject weatherdata;
+    private string weathername;
+    public CurrentConditionDisplay(Subject s,string name)//构造器需要subject对象 和观察者的名字
+    {
+        weatherdata = s;//保存被观察者只是为了以后我们可能会取消注册，会比较方便
+        weatherdata.RegisterObserver(this);
+        this.weathername = name;
+    }
+    public void Remove()//取消注册
+    {
+        waterdata.RemoveObserver(this);
+    }
+    public void Display()//接到通知后自己做出相应的响应
+    {
+        Console.WriteLine(watername + &quot;发出相应的改变&quot;);
+    }
+
+    public void Update()//接受观察者的通知
     {
         Console.WriteLine(watername+&quot; 已经接到通知&quot;);
         Display();//这个方法目前先在Update方法中调用（详细讲解请看MVC模式）
@@ -370,7 +404,7 @@
         <p><span>本文标题:</span><a href="/2017/09/12/HeadFirst-Subject-Observer/">C# 设计模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2017年09月12日 - 18时34分</p>
-        <p><span>最后更新:</span>2017年09月12日 - 19时33分</p>
+        <p><span>最后更新:</span>2017年09月12日 - 20时55分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/12/HeadFirst-Subject-Observer/" title="C# 设计模式">http://yoursite.com/2017/09/12/HeadFirst-Subject-Observer/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/12/HeadFirst-Subject-Observer/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
