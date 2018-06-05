@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git 常用命令总结 | zhySmile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Git 常用命令总结">
+<meta name="keywords" content="version management">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 常用命令总结">
+<meta property="og:url" content="http://yoursite.com/2018/06/05/Git/index.html">
+<meta property="og:site_name" content="zhySmile">
+<meta property="og:description" content="Git 常用命令总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-05T14:11:42.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git 常用命令总结">
+<meta name="twitter:description" content="Git 常用命令总结">
+  
+    <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">张海燕</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="https://zhysmile.github.io/">博客首页</a></li>
+                        
+                            <li><a href="/tags">静心阅读</a></li>
+                        
+                            <li><a href="/categories">光影之路</a></li>
+                        
+                            <li><a href="/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/zhySmile" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/li-en-zan-3/activities" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/AssetBundle/" style="font-size: 10px;">AssetBundle</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/U3D/" style="font-size: 10px;">U3D</a> <a href="/tags/version-management/" style="font-size: 10px;">version management</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://zhySmile.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">迷之微笑</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">张海燕</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">张海燕</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://zhysmile.github.io/">博客首页</a></li>
+                
+                    <li><a href="/tags">静心阅读</a></li>
+                
+                    <li><a href="/categories">光影之路</a></li>
+                
+                    <li><a href="/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhySmile" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-en-zan-3/activities" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Git" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/05/Git/" class="article-date">
+      <time datetime="2018-06-05T14:06:58.102Z" itemprop="datePublished">2018-06-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 常用命令总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/版本管理/">版本管理</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/version-management/">version management</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Git 常用命令总结<br><a id="more"></a><br>仓库</p>
+<h1 id="在当前目录新建一个-Git-代码库"><a href="#在当前目录新建一个-Git-代码库" class="headerlink" title="在当前目录新建一个 Git 代码库"></a>在当前目录新建一个 Git 代码库</h1><p>$ git init</p>
+<h1 id="新建一个目录，将其初始化为-Git-代码库"><a href="#新建一个目录，将其初始化为-Git-代码库" class="headerlink" title="新建一个目录，将其初始化为 Git 代码库"></a>新建一个目录，将其初始化为 Git 代码库</h1><p>$ git init [project-name]</p>
+<h1 id="下载一个项目和它的整个代码历史"><a href="#下载一个项目和它的整个代码历史" class="headerlink" title="下载一个项目和它的整个代码历史"></a>下载一个项目和它的整个代码历史</h1><p>$ git clone [url]</p>
+<h1 id="clone-到指定目录"><a href="#clone-到指定目录" class="headerlink" title="clone 到指定目录"></a>clone 到指定目录</h1><p>$ git clone XXX.git “指定目录”</p>
+<h1 id="clone-时创建新的分支替代默认-Origin-HEAD-master"><a href="#clone-时创建新的分支替代默认-Origin-HEAD-master" class="headerlink" title="clone 时创建新的分支替代默认 Origin HEAD(master)"></a>clone 时创建新的分支替代默认 Origin HEAD(master)</h1><p>$ git clone -b [new_branch_name] xxx.git</p>
+<h1 id="clone-远程分支（git-clone-命令默认的只会建立-master-分支）-想要-clone-指定的某一远程分支"><a href="#clone-远程分支（git-clone-命令默认的只会建立-master-分支）-想要-clone-指定的某一远程分支" class="headerlink" title="clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支"></a>clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支</h1><p>$ git checkout -t origin/dev 或 git checkout -b dev origin/dev</p>
+<p>添加/删除文件</p>
+<h1 id="添加指定文件到暂存区"><a href="#添加指定文件到暂存区" class="headerlink" title="添加指定文件到暂存区"></a>添加指定文件到暂存区</h1><p>$ git add [file or dir]</p>
+<h1 id="添加所有文件到暂存区"><a href="#添加所有文件到暂存区" class="headerlink" title="添加所有文件到暂存区"></a>添加所有文件到暂存区</h1><p>$ git add .</p>
+<h1 id="删除指定文件，并且将这个改变添加到暂存区"><a href="#删除指定文件，并且将这个改变添加到暂存区" class="headerlink" title="删除指定文件，并且将这个改变添加到暂存区"></a>删除指定文件，并且将这个改变添加到暂存区</h1><p>$ git rm –cached [file]</p>
+<h1 id="改名文件，并且将这个改名放入暂存区"><a href="#改名文件，并且将这个改名放入暂存区" class="headerlink" title="改名文件，并且将这个改名放入暂存区"></a>改名文件，并且将这个改名放入暂存区</h1><p>$ git mv [file-original] [file-renamed]</p>
+<h1 id="将工作区清空（针对新添加的文件）"><a href="#将工作区清空（针对新添加的文件）" class="headerlink" title="将工作区清空（针对新添加的文件）"></a>将工作区清空（针对新添加的文件）</h1><p>$ git clean -fd</p>
+<h1 id="将工作区清空（针对有改动的文件）"><a href="#将工作区清空（针对有改动的文件）" class="headerlink" title="将工作区清空（针对有改动的文件）"></a>将工作区清空（针对有改动的文件）</h1><p>$ git checkout .<br>撤销</p>
+<h1 id="重置暂存区的指定文件，与上一次-commit-保持一致，但工作区不变"><a href="#重置暂存区的指定文件，与上一次-commit-保持一致，但工作区不变" class="headerlink" title="重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变"></a>重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</h1><p>$ git reset [file]</p>
+<h1 id="重置暂存区与工作区，与上一次-commit-保持一致"><a href="#重置暂存区与工作区，与上一次-commit-保持一致" class="headerlink" title="重置暂存区与工作区，与上一次 commit 保持一致"></a>重置暂存区与工作区，与上一次 commit 保持一致</h1><p>$ git reset –hard<br>git reset –hard HEAD^ 撤消上一次提交<br>git reset –hard HEAD~3  撤销三次提交</p>
+<h1 id="该条commit-SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中"><a href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中" class="headerlink" title="该条commit SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中"></a>该条commit SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中</h1><p>$ git reset –soft [SHA]</p>
+<h1 id="该条commit-SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃，-缓冲区中不会存储这些修改"><a href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃，-缓冲区中不会存储这些修改" class="headerlink" title="该条commit SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃， 缓冲区中不会存储这些修改"></a>该条commit SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃， 缓冲区中不会存储这些修改</h1><p>$ git reset –hard [SHA]<br>注意：这样的重置是直接在本地的修改，无法提交到远程服务器，如果直接丢弃的内容已经被推到远程服务器上了，则会造成本地和服务器无法同步的问题，即git reset –hard只能针对本地操作，不能针对远程服务器进行同样操作。如果从本地删掉的内容没有推到服务器上，则不会有副作用，如果被推到服务器，则下次本地和服务器进行同步时，这部分删掉的内容仍然会回来。（其实这个问题则可以很好的被git revert 命令解决，使用git revert + commit号，该命令撤销对某个commit的提交，这一撤销动作会作为一个新的修改存储起来，这样，当你和服务器同步时，就不会产生什么副作用。）</p>
+<h1 id="撤销已推送的commit"><a href="#撤销已推送的commit" class="headerlink" title="撤销已推送的commit"></a>撤销已推送的commit</h1><p>$  git revert commit号<br>通常情况下，上面这条revert命令会让程序员修改注释，这时候程序员应该标注revert的原因，假设程序员就想使用默认的注释，可以在命令中加上–no-edit参数。另一个重要的参数是-n或者–no-commit，应用这个参数会让revert 改动只限于程序员的本地仓库，而不自动进行commit，如果程序员想在revert之前进行更多的改动，或者想要revert多个commit，这个参数尤其好用</p>
+<h1 id="撤销已推送的-merge"><a href="#撤销已推送的-merge" class="headerlink" title="撤销已推送的 merge"></a>撤销已推送的 merge</h1><p>$  git revert 3826574510467c51e174db0f53b83e3542bc1c6f -m 2（例如）<br> 对于revert merge的情况，程序员需要指出revert 这个merge commit中的哪一个。通过-m或者–mainline参数，以及配合一个整数参数，git就知道到底要revert哪一个merge。（使用 git log3826574510467c51e174db0f53b83e3542bc1 可以查看那次合并提交的两个提交 SHA 值。例如 自己分支合并到主分支，则第一个 SHA 是主分支的，第二个是自己分支，此处的指令即 revert 自己分支）</p>
+<p>#修改提交<br>$git rebase -i HEAD~3<br>将看到HEAD到HEAD~3的提交<br>将第一行的“pick”改成想要的指令，然后保存并退出。将会显示以下内容，修改过的提交呈现退出状态。<br>用commit –amend保存修改。<br>现在已经commit，但是rebase操作还没结束。若要通知这个提交的操作已经结束，请指定 –continue选项执行rebase。</p>
+<h1 id="终止rebase的行动"><a href="#终止rebase的行动" class="headerlink" title="终止rebase的行动"></a>终止rebase的行动</h1><p>$git rebase –abort<br>提交</p>
+<h1 id="提交暂存区到仓库区"><a href="#提交暂存区到仓库区" class="headerlink" title="提交暂存区到仓库区"></a>提交暂存区到仓库区</h1><p>$ git commit -m [message]</p>
+<h1 id="提交暂存区的指定文件到仓库区"><a href="#提交暂存区的指定文件到仓库区" class="headerlink" title="提交暂存区的指定文件到仓库区"></a>提交暂存区的指定文件到仓库区</h1><p>$ git commit  [file1] [file2] … -m [message]</p>
+<p>#提交工作区自上次commit之后的变化，直接到仓库区<br>$ git commit -a</p>
+<p>#提交时显示所有diff信息<br>$ git commit -v</p>
+<p>#重做上一次commit，并包括指定文件的新变化<br>$ git commit –amend [file1] [file2]…</p>
+<p>分支</p>
+<h1 id="列出所有本地分支"><a href="#列出所有本地分支" class="headerlink" title="列出所有本地分支"></a>列出所有本地分支</h1><p>$ git branch</p>
+<h1 id="列出所有远程分支"><a href="#列出所有远程分支" class="headerlink" title="列出所有远程分支"></a>列出所有远程分支</h1><p>$ git branch -r </p>
+<p>#列出所有分支<br>$git branch -a</p>
+<h1 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h1><p>$ git checkout [branch]</p>
+<h1 id="新建一个分支，并切换到该分支"><a href="#新建一个分支，并切换到该分支" class="headerlink" title="新建一个分支，并切换到该分支"></a>新建一个分支，并切换到该分支</h1><p>$ git checkout -b [branch]=git branch [branch]; git checkout [branch]</p>
+<h1 id="新建一个分支，指向指定commit"><a href="#新建一个分支，指向指定commit" class="headerlink" title="新建一个分支，指向指定commit"></a>新建一个分支，指向指定commit</h1><p>$ git branch [branch] [commit]</p>
+<h1 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h1><p>$ git push origin [branch]</p>
+<h1 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h1><p>$ git branch -d [branch]</p>
+<h1 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h1><p>$ git push origin –delete [branch]<br>$ git branch -dr [remote/branch]</p>
+<h1 id="清理其他人删除的远程"><a href="#清理其他人删除的远程" class="headerlink" title="清理其他人删除的远程"></a>清理其他人删除的远程</h1><p>$ git remote prune origin</p>
+<h1 id="将当前分支移到branch分支上"><a href="#将当前分支移到branch分支上" class="headerlink" title="将当前分支移到branch分支上"></a>将当前分支移到branch分支上</h1><p>$ git reset –hard [branch]</p>
+<p>#将一个本地分支重命名<br>$ git branch -m oldbranchname newbranchname</p>
+<p>#将一个远程分支重命名(假设本地分支和远程对应分支名称相同)</p>
+<p>a. 重命名远程分支对应的本地分支</p>
+<p>git branch -m old-local-branch-name new-local-branch-name</p>
+<p>b. 删除远程分支</p>
+<p>git push origin  :old-local-branch-name</p>
+<p>c. 上传新命名的本地分支<br>git push origin  new-local-branch-name: new-local-branch-name<br>标签</p>
+<h1 id="列出所有tag"><a href="#列出所有tag" class="headerlink" title="列出所有tag"></a>列出所有tag</h1><p>$ git tag</p>
+<h1 id="新建一个tag在当前commit"><a href="#新建一个tag在当前commit" class="headerlink" title="新建一个tag在当前commit"></a>新建一个tag在当前commit</h1><p>$ git tag [tag]</p>
+<p>#新建一个tag在指定commit<br>$ git tag [tag] [commit]</p>
+<p>#删除本地tag<br>$ git tag -d [tag]</p>
+<p>#删除远程tag<br>$ git push origin :refs/tags/[tagName]</p>
+<p>#查看tag信息<br>$ git show [tag]</p>
+<p>#提交指定tag<br>$ git push [remote] [tag]</p>
+<p>#提交所有tag<br>$git push [remote] –tags</p>
+<p>#新建一个分支，指向某个tag<br>$ git checkout -b [branch] [tag]</p>
+<p>查看信息</p>
+<h1 id="显示有变更的文件"><a href="#显示有变更的文件" class="headerlink" title="显示有变更的文件"></a>显示有变更的文件</h1><p>$ git status</p>
+<h1 id="显示暂存区和工作区的差异"><a href="#显示暂存区和工作区的差异" class="headerlink" title="显示暂存区和工作区的差异"></a>显示暂存区和工作区的差异</h1><p>$ git diff</p>
+<h1 id="显示当前分支的版本历史"><a href="#显示当前分支的版本历史" class="headerlink" title="显示当前分支的版本历史"></a>显示当前分支的版本历史</h1><p>$ git log</p>
+<p>#显示commit历史，以及每次commit发生变更的文件<br>$ git log –stat</p>
+<p>#搜索提交历史，根据关键词<br>$ git log -S [keyword]</p>
+<p>#显示指定文件是什么人在什么时间修改过<br>$ git blame [file]</p>
+<h1 id="显示某次提交的元数据和内容变化"><a href="#显示某次提交的元数据和内容变化" class="headerlink" title="显示某次提交的元数据和内容变化"></a>显示某次提交的元数据和内容变化</h1><p>$ git show [commit]</p>
+<p>#显示当前分支的最近几次提交<br>$ git reflog<br>远程同步</p>
+<p>#显示某个远程仓库的信息<br>$ git remote show [remote]</p>
+<h1 id="取回远程仓库的变化，并与本地分支合并"><a href="#取回远程仓库的变化，并与本地分支合并" class="headerlink" title="取回远程仓库的变化，并与本地分支合并"></a>取回远程仓库的变化，并与本地分支合并</h1><p>$ git pull [remote] [branch]</p>
+<h1 id="上传本地指定分支到远程仓库"><a href="#上传本地指定分支到远程仓库" class="headerlink" title="上传本地指定分支到远程仓库"></a>上传本地指定分支到远程仓库</h1><p>$ git push [remote] [branch]</p>
+<p>技巧</p>
+<h1 id="忽略自己对工作目录中的文件修改"><a href="#忽略自己对工作目录中的文件修改" class="headerlink" title="忽略自己对工作目录中的文件修改"></a>忽略自己对工作目录中的文件修改</h1><p>$ git update-index –skip-worktree <filepath></filepath></p>
+<h1 id="列出工作目录中已被忽略修改的文件"><a href="#列出工作目录中已被忽略修改的文件" class="headerlink" title="列出工作目录中已被忽略修改的文件"></a>列出工作目录中已被忽略修改的文件</h1><p>$ git ls-files -v . | grep ^S</p>
+<p>#退出<br>$Esc-&gt;shift+:-&gt;wq</p>
+<p>刷新<br>F5</p>
+<p>#调出某一命令的帮助<br>例如：<br>$ git reset –help (调出reset的帮助)</p>
+<p>#修改已提交的作者<br>$git filter-branch –commit-filter \<br>‘if [ “$GIT_AUTHOR_NAME” = “your old name” ]; then \<br>export GIT_AUTHOR_NAME=”your correct name”;\<br>export GIT_AUTHOR_EMAIL= your correct email;\<br>export GIT_COMMITTER_NAME=” your correct name”;\<br>export GIT_COMMITTER_EMAIL= your correct email;\<br>fi;\<br>git commit-tree “$@”‘</p>
+<p>#假如上面一步执行的过于慢，可以执行下面的方法一个一个修改<br>$git rebase -i -p <some head="" before="" all="" of="" your="" bad="" commits=""></some></p>
+<p>Then mark all of your bad commits as “edit” in the rebase file. If you also want to change your first commit, you have to manually add it as first line in the rebase file (follow the format of the other lines). Then, when git asks you to amend each commit, do<br>$git commit –amend –author “New Author Name <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#101;&#x6d;&#x61;&#x69;&#x6c;&#64;&#97;&#100;&#100;&#x72;&#101;&#115;&#115;&#46;&#x63;&#111;&#109;">&#101;&#x6d;&#x61;&#x69;&#x6c;&#64;&#97;&#100;&#100;&#x72;&#101;&#115;&#115;&#46;&#x63;&#111;&#109;</a>“</p>
+<p> edit or just close the editor that opens, and then do<br>$git rebase –continue</p>
+<p>to continue the rebase.</p>
+<p>git merge zhanghaiyan/player-info –no-ff  当刚merge完master 又merge zhanghaiyan/player-info时是不可以直接merge的，要使用此命令</p>
+<p>git pull -r  在master分支上做了提交想git pull时要使用这个命令，即merge本地提交到下载下来的分支上面了</p>
+<p>git merge origin/master 本地分支合并最新的主分支</p>
+<p>git commit –amend   修改最近一次的提交</p>
+<p>git revert HEAD  取消提交</p>
+<p>使用 git config rebase.autoStash true 命令，作用是在执行rebase之前自动stash,之后再自动pop。<br>Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 –no-autostash 选项取消该标记的功能</p>
+<p>git reset –hard origin/master 本地分支直接同步到远程分支</p>
+<p>git reflog 查看所有操作</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/05/Git/">Git 常用命令总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
+        <p><span>发布时间:</span>2018年06月05日 - 22时06分</p>
+        <p><span>最后更新:</span>2018年06月05日 - 22时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/05/Git/" title="Git 常用命令总结">http://yoursite.com/2018/06/05/Git/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/05/Git/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/27/《调试九法》读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《调试九法》读书笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在当前目录新建一个-Git-代码库"><span class="toc-number">1.</span> <span class="toc-text">在当前目录新建一个 Git 代码库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个目录，将其初始化为-Git-代码库"><span class="toc-number">2.</span> <span class="toc-text">新建一个目录，将其初始化为 Git 代码库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载一个项目和它的整个代码历史"><span class="toc-number">3.</span> <span class="toc-text">下载一个项目和它的整个代码历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone-到指定目录"><span class="toc-number">4.</span> <span class="toc-text">clone 到指定目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone-时创建新的分支替代默认-Origin-HEAD-master"><span class="toc-number">5.</span> <span class="toc-text">clone 时创建新的分支替代默认 Origin HEAD(master)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone-远程分支（git-clone-命令默认的只会建立-master-分支）-想要-clone-指定的某一远程分支"><span class="toc-number">6.</span> <span class="toc-text">clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加指定文件到暂存区"><span class="toc-number">7.</span> <span class="toc-text">添加指定文件到暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加所有文件到暂存区"><span class="toc-number">8.</span> <span class="toc-text">添加所有文件到暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除指定文件，并且将这个改变添加到暂存区"><span class="toc-number">9.</span> <span class="toc-text">删除指定文件，并且将这个改变添加到暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#改名文件，并且将这个改名放入暂存区"><span class="toc-number">10.</span> <span class="toc-text">改名文件，并且将这个改名放入暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将工作区清空（针对新添加的文件）"><span class="toc-number">11.</span> <span class="toc-text">将工作区清空（针对新添加的文件）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将工作区清空（针对有改动的文件）"><span class="toc-number">12.</span> <span class="toc-text">将工作区清空（针对有改动的文件）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重置暂存区的指定文件，与上一次-commit-保持一致，但工作区不变"><span class="toc-number">13.</span> <span class="toc-text">重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重置暂存区与工作区，与上一次-commit-保持一致"><span class="toc-number">14.</span> <span class="toc-text">重置暂存区与工作区，与上一次 commit 保持一致</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中"><span class="toc-number">15.</span> <span class="toc-text">该条commit SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃，-缓冲区中不会存储这些修改"><span class="toc-number">16.</span> <span class="toc-text">该条commit SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃， 缓冲区中不会存储这些修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销已推送的commit"><span class="toc-number">17.</span> <span class="toc-text">撤销已推送的commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销已推送的-merge"><span class="toc-number">18.</span> <span class="toc-text">撤销已推送的 merge</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#终止rebase的行动"><span class="toc-number">19.</span> <span class="toc-text">终止rebase的行动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提交暂存区到仓库区"><span class="toc-number">20.</span> <span class="toc-text">提交暂存区到仓库区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提交暂存区的指定文件到仓库区"><span class="toc-number">21.</span> <span class="toc-text">提交暂存区的指定文件到仓库区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出所有本地分支"><span class="toc-number">22.</span> <span class="toc-text">列出所有本地分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出所有远程分支"><span class="toc-number">23.</span> <span class="toc-text">列出所有远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换分支"><span class="toc-number">24.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个分支，并切换到该分支"><span class="toc-number">25.</span> <span class="toc-text">新建一个分支，并切换到该分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个分支，指向指定commit"><span class="toc-number">26.</span> <span class="toc-text">新建一个分支，指向指定commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推送分支"><span class="toc-number">27.</span> <span class="toc-text">推送分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除分支"><span class="toc-number">28.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除远程分支"><span class="toc-number">29.</span> <span class="toc-text">删除远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#清理其他人删除的远程"><span class="toc-number">30.</span> <span class="toc-text">清理其他人删除的远程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将当前分支移到branch分支上"><span class="toc-number">31.</span> <span class="toc-text">将当前分支移到branch分支上</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出所有tag"><span class="toc-number">32.</span> <span class="toc-text">列出所有tag</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个tag在当前commit"><span class="toc-number">33.</span> <span class="toc-text">新建一个tag在当前commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示有变更的文件"><span class="toc-number">34.</span> <span class="toc-text">显示有变更的文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示暂存区和工作区的差异"><span class="toc-number">35.</span> <span class="toc-text">显示暂存区和工作区的差异</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示当前分支的版本历史"><span class="toc-number">36.</span> <span class="toc-text">显示当前分支的版本历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示某次提交的元数据和内容变化"><span class="toc-number">37.</span> <span class="toc-text">显示某次提交的元数据和内容变化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#取回远程仓库的变化，并与本地分支合并"><span class="toc-number">38.</span> <span class="toc-text">取回远程仓库的变化，并与本地分支合并</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上传本地指定分支到远程仓库"><span class="toc-number">39.</span> <span class="toc-text">上传本地指定分支到远程仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#忽略自己对工作目录中的文件修改"><span class="toc-number">40.</span> <span class="toc-text">忽略自己对工作目录中的文件修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出工作目录中已被忽略修改的文件"><span class="toc-number">41.</span> <span class="toc-text">列出工作目录中已被忽略修改的文件</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'zhySmile',
+      repo: 'zhySmile.github.io',
+      oauth: {
+        client_id: 'e8fd4f45c5f750cd68d0',
+        client_secret: 'e8cf72d4510d44ab33f3748438c0ba58ebe1a48e',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/05/27/《调试九法》读书笔记/" title="下一篇: 《调试九法》读书笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/Git/">Git 常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/《调试九法》读书笔记/">《调试九法》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/AssetBundleManual1/">U3D AssetBundle 官方文档（翻译版）学习笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 张海燕
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-" + backgroundnum +".jpg)";
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
