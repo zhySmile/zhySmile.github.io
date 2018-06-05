@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="zhySmile">
 <meta property="og:description" content="Git 常用命令总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T14:11:42.808Z">
+<meta property="og:updated_time" content="2018-06-05T15:22:12.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 常用命令总结">
 <meta name="twitter:description" content="Git 常用命令总结">
@@ -252,92 +252,391 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Git 常用命令总结<br><a id="more"></a><br>仓库</p>
-<h1 id="在当前目录新建一个-Git-代码库"><a href="#在当前目录新建一个-Git-代码库" class="headerlink" title="在当前目录新建一个 Git 代码库"></a>在当前目录新建一个 Git 代码库</h1><p>$ git init</p>
-<h1 id="新建一个目录，将其初始化为-Git-代码库"><a href="#新建一个目录，将其初始化为-Git-代码库" class="headerlink" title="新建一个目录，将其初始化为 Git 代码库"></a>新建一个目录，将其初始化为 Git 代码库</h1><p>$ git init [project-name]</p>
-<h1 id="下载一个项目和它的整个代码历史"><a href="#下载一个项目和它的整个代码历史" class="headerlink" title="下载一个项目和它的整个代码历史"></a>下载一个项目和它的整个代码历史</h1><p>$ git clone [url]</p>
-<h1 id="clone-到指定目录"><a href="#clone-到指定目录" class="headerlink" title="clone 到指定目录"></a>clone 到指定目录</h1><p>$ git clone XXX.git “指定目录”</p>
-<h1 id="clone-时创建新的分支替代默认-Origin-HEAD-master"><a href="#clone-时创建新的分支替代默认-Origin-HEAD-master" class="headerlink" title="clone 时创建新的分支替代默认 Origin HEAD(master)"></a>clone 时创建新的分支替代默认 Origin HEAD(master)</h1><p>$ git clone -b [new_branch_name] xxx.git</p>
-<h1 id="clone-远程分支（git-clone-命令默认的只会建立-master-分支）-想要-clone-指定的某一远程分支"><a href="#clone-远程分支（git-clone-命令默认的只会建立-master-分支）-想要-clone-指定的某一远程分支" class="headerlink" title="clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支"></a>clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支</h1><p>$ git checkout -t origin/dev 或 git checkout -b dev origin/dev</p>
-<p>添加/删除文件</p>
-<h1 id="添加指定文件到暂存区"><a href="#添加指定文件到暂存区" class="headerlink" title="添加指定文件到暂存区"></a>添加指定文件到暂存区</h1><p>$ git add [file or dir]</p>
-<h1 id="添加所有文件到暂存区"><a href="#添加所有文件到暂存区" class="headerlink" title="添加所有文件到暂存区"></a>添加所有文件到暂存区</h1><p>$ git add .</p>
-<h1 id="删除指定文件，并且将这个改变添加到暂存区"><a href="#删除指定文件，并且将这个改变添加到暂存区" class="headerlink" title="删除指定文件，并且将这个改变添加到暂存区"></a>删除指定文件，并且将这个改变添加到暂存区</h1><p>$ git rm –cached [file]</p>
-<h1 id="改名文件，并且将这个改名放入暂存区"><a href="#改名文件，并且将这个改名放入暂存区" class="headerlink" title="改名文件，并且将这个改名放入暂存区"></a>改名文件，并且将这个改名放入暂存区</h1><p>$ git mv [file-original] [file-renamed]</p>
-<h1 id="将工作区清空（针对新添加的文件）"><a href="#将工作区清空（针对新添加的文件）" class="headerlink" title="将工作区清空（针对新添加的文件）"></a>将工作区清空（针对新添加的文件）</h1><p>$ git clean -fd</p>
-<h1 id="将工作区清空（针对有改动的文件）"><a href="#将工作区清空（针对有改动的文件）" class="headerlink" title="将工作区清空（针对有改动的文件）"></a>将工作区清空（针对有改动的文件）</h1><p>$ git checkout .<br>撤销</p>
-<h1 id="重置暂存区的指定文件，与上一次-commit-保持一致，但工作区不变"><a href="#重置暂存区的指定文件，与上一次-commit-保持一致，但工作区不变" class="headerlink" title="重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变"></a>重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</h1><p>$ git reset [file]</p>
-<h1 id="重置暂存区与工作区，与上一次-commit-保持一致"><a href="#重置暂存区与工作区，与上一次-commit-保持一致" class="headerlink" title="重置暂存区与工作区，与上一次 commit 保持一致"></a>重置暂存区与工作区，与上一次 commit 保持一致</h1><p>$ git reset –hard<br>git reset –hard HEAD^ 撤消上一次提交<br>git reset –hard HEAD~3  撤销三次提交</p>
-<h1 id="该条commit-SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中"><a href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中" class="headerlink" title="该条commit SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中"></a>该条commit SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中</h1><p>$ git reset –soft [SHA]</p>
-<h1 id="该条commit-SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃，-缓冲区中不会存储这些修改"><a href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃，-缓冲区中不会存储这些修改" class="headerlink" title="该条commit SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃， 缓冲区中不会存储这些修改"></a>该条commit SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃， 缓冲区中不会存储这些修改</h1><p>$ git reset –hard [SHA]<br>注意：这样的重置是直接在本地的修改，无法提交到远程服务器，如果直接丢弃的内容已经被推到远程服务器上了，则会造成本地和服务器无法同步的问题，即git reset –hard只能针对本地操作，不能针对远程服务器进行同样操作。如果从本地删掉的内容没有推到服务器上，则不会有副作用，如果被推到服务器，则下次本地和服务器进行同步时，这部分删掉的内容仍然会回来。（其实这个问题则可以很好的被git revert 命令解决，使用git revert + commit号，该命令撤销对某个commit的提交，这一撤销动作会作为一个新的修改存储起来，这样，当你和服务器同步时，就不会产生什么副作用。）</p>
-<h1 id="撤销已推送的commit"><a href="#撤销已推送的commit" class="headerlink" title="撤销已推送的commit"></a>撤销已推送的commit</h1><p>$  git revert commit号<br>通常情况下，上面这条revert命令会让程序员修改注释，这时候程序员应该标注revert的原因，假设程序员就想使用默认的注释，可以在命令中加上–no-edit参数。另一个重要的参数是-n或者–no-commit，应用这个参数会让revert 改动只限于程序员的本地仓库，而不自动进行commit，如果程序员想在revert之前进行更多的改动，或者想要revert多个commit，这个参数尤其好用</p>
-<h1 id="撤销已推送的-merge"><a href="#撤销已推送的-merge" class="headerlink" title="撤销已推送的 merge"></a>撤销已推送的 merge</h1><p>$  git revert 3826574510467c51e174db0f53b83e3542bc1c6f -m 2（例如）<br> 对于revert merge的情况，程序员需要指出revert 这个merge commit中的哪一个。通过-m或者–mainline参数，以及配合一个整数参数，git就知道到底要revert哪一个merge。（使用 git log3826574510467c51e174db0f53b83e3542bc1 可以查看那次合并提交的两个提交 SHA 值。例如 自己分支合并到主分支，则第一个 SHA 是主分支的，第二个是自己分支，此处的指令即 revert 自己分支）</p>
-<p>#修改提交<br>$git rebase -i HEAD~3<br>将看到HEAD到HEAD~3的提交<br>将第一行的“pick”改成想要的指令，然后保存并退出。将会显示以下内容，修改过的提交呈现退出状态。<br>用commit –amend保存修改。<br>现在已经commit，但是rebase操作还没结束。若要通知这个提交的操作已经结束，请指定 –continue选项执行rebase。</p>
-<h1 id="终止rebase的行动"><a href="#终止rebase的行动" class="headerlink" title="终止rebase的行动"></a>终止rebase的行动</h1><p>$git rebase –abort<br>提交</p>
-<h1 id="提交暂存区到仓库区"><a href="#提交暂存区到仓库区" class="headerlink" title="提交暂存区到仓库区"></a>提交暂存区到仓库区</h1><p>$ git commit -m [message]</p>
-<h1 id="提交暂存区的指定文件到仓库区"><a href="#提交暂存区的指定文件到仓库区" class="headerlink" title="提交暂存区的指定文件到仓库区"></a>提交暂存区的指定文件到仓库区</h1><p>$ git commit  [file1] [file2] … -m [message]</p>
-<p>#提交工作区自上次commit之后的变化，直接到仓库区<br>$ git commit -a</p>
-<p>#提交时显示所有diff信息<br>$ git commit -v</p>
-<p>#重做上一次commit，并包括指定文件的新变化<br>$ git commit –amend [file1] [file2]…</p>
-<p>分支</p>
-<h1 id="列出所有本地分支"><a href="#列出所有本地分支" class="headerlink" title="列出所有本地分支"></a>列出所有本地分支</h1><p>$ git branch</p>
-<h1 id="列出所有远程分支"><a href="#列出所有远程分支" class="headerlink" title="列出所有远程分支"></a>列出所有远程分支</h1><p>$ git branch -r </p>
-<p>#列出所有分支<br>$git branch -a</p>
-<h1 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h1><p>$ git checkout [branch]</p>
-<h1 id="新建一个分支，并切换到该分支"><a href="#新建一个分支，并切换到该分支" class="headerlink" title="新建一个分支，并切换到该分支"></a>新建一个分支，并切换到该分支</h1><p>$ git checkout -b [branch]=git branch [branch]; git checkout [branch]</p>
-<h1 id="新建一个分支，指向指定commit"><a href="#新建一个分支，指向指定commit" class="headerlink" title="新建一个分支，指向指定commit"></a>新建一个分支，指向指定commit</h1><p>$ git branch [branch] [commit]</p>
-<h1 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h1><p>$ git push origin [branch]</p>
-<h1 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h1><p>$ git branch -d [branch]</p>
-<h1 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h1><p>$ git push origin –delete [branch]<br>$ git branch -dr [remote/branch]</p>
-<h1 id="清理其他人删除的远程"><a href="#清理其他人删除的远程" class="headerlink" title="清理其他人删除的远程"></a>清理其他人删除的远程</h1><p>$ git remote prune origin</p>
-<h1 id="将当前分支移到branch分支上"><a href="#将当前分支移到branch分支上" class="headerlink" title="将当前分支移到branch分支上"></a>将当前分支移到branch分支上</h1><p>$ git reset –hard [branch]</p>
-<p>#将一个本地分支重命名<br>$ git branch -m oldbranchname newbranchname</p>
-<p>#将一个远程分支重命名(假设本地分支和远程对应分支名称相同)</p>
+        <p>Git 常用命令总结<br><a id="more"></a></p>
+<h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><blockquote>
+<p>在当前目录新建一个 Git 代码库  </p>
+</blockquote>
+<pre><code>git init  
+</code></pre><hr>
+<blockquote>
+<p>新建一个目录，将其初始化为 Git 代码库</p>
+</blockquote>
+<pre><code>git init [project-name]
+</code></pre><hr>
+<blockquote>
+<p>下载一个项目和它的整个代码历史  </p>
+</blockquote>
+<pre><code>git clone [url]
+</code></pre><hr>
+<blockquote>
+<p>clone 到指定目录  </p>
+</blockquote>
+<pre><code>git clone XXX.git &quot;指定目录&quot;
+</code></pre><hr>
+<blockquote>
+<p>clone 时创建新的分支替代默认 Origin HEAD(master)</p>
+</blockquote>
+<pre><code>git clone -b [new_branch_name] xxx.git
+</code></pre><hr>
+<blockquote>
+<p>clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支</p>
+</blockquote>
+<pre><code>git checkout -t origin/dev 或 git checkout -b dev origin/dev
+</code></pre><hr>
+<h1 id="添加-删除文件"><a href="#添加-删除文件" class="headerlink" title="添加/删除文件"></a>添加/删除文件</h1><blockquote>
+<p>添加指定文件到暂存区</p>
+</blockquote>
+<pre><code>git add [file or dir]
+</code></pre><hr>
+<blockquote>
+<p> 添加所有文件到暂存区</p>
+</blockquote>
+<pre><code>git add .
+</code></pre><hr>
+<blockquote>
+<p>删除指定文件，并且将这个改变添加到暂存区</p>
+</blockquote>
+<pre><code>git rm --cached [file]
+</code></pre><hr>
+<blockquote>
+<p> 改名文件，并且将这个改名放入暂存区</p>
+</blockquote>
+<pre><code>git mv [file-original] [file-renamed]
+</code></pre><hr>
+<blockquote>
+<p> 将工作区清空（针对新添加的文件）</p>
+</blockquote>
+<pre><code>git clean -fd
+</code></pre><hr>
+<blockquote>
+<p> 将工作区清空（针对有改动的文件）</p>
+</blockquote>
+<pre><code>git checkout .
+</code></pre><hr>
+<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><blockquote>
+<p> 重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</p>
+</blockquote>
+<pre><code>git reset [file]
+</code></pre><hr>
+<blockquote>
+<p>重置暂存区与工作区，与上一次 commit 保持一致</p>
+</blockquote>
+<pre><code>git reset --hard
+git reset --hard HEAD^ 撤消上一次提交
+git reset --hard HEAD~3  撤销三次提交
+</code></pre><hr>
+<blockquote>
+<p> 该条 commit SHA 号之后（时间作为参考点）的所有 commit 的修改都会退回到 git 暂存区中</p>
+</blockquote>
+<pre><code>git reset --soft [SHA]
+</code></pre><hr>
+<blockquote>
+<p> 该条 commit SHA 号之后（时间作为参考点）的所有 commit 的修改会被直接丢弃， 缓冲区中不会存储这些修改</p>
+</blockquote>
+<pre><code> git reset --hard [SHA]
+
+注意：这样的重置是直接在本地的修改，无法提交到远程服务器，如果直接丢弃的内容已经被推到远程服务器上了，则会造成本地和服务器无法同步的问题，即 git reset --hard 只能针对本地操作，不能针对远程服务器进行同样操作。如果从本地删掉的内容没有推到服务器上，则不会有副作用，如果被推到服务器，则下次本地和服务器进行同步时，这部分删掉的内容仍然会回来。（其实这个问题则可以很好的被 git revert 命令解决，使用g it revert [SHA] 号，该命令撤销对某个 commit 的提交，这一撤销动作会作为一个新的修改存储起来，这样，当你和服务器同步时，就不会产生什么副作用。）
+</code></pre><hr>
+<blockquote>
+<p> 撤销已推送的commit</p>
+</blockquote>
+<pre><code>  git revert [SHA]
+
+通常情况下，上面这条revert命令会让程序员修改注释，这时候程序员应该标注revert的原因，假设程序员就想使用默认的注释，可以在命令中加上 --no-edit 参数。另一个重要的参数是 -n 或者 --no-commit，应用这个参数会让 revert 改动只限于程序员的本地仓库，而不自动进行 commit，如果程序员想在 revert 之前进行更多的改动，或者想要 revert 多个 commit，这个参数尤其好用
+</code></pre><hr>
+<blockquote>
+<p> 撤销已推送的 merge</p>
+</blockquote>
+<pre><code>  git revert 3826574510467c51e174db0f53b83e3542bc1c6f -m 2（例如）
+
+对于 revert merge 的情况，程序员需要指出 revert 这个 merge commit 中的哪一个。通过 -m 或者 --mainline 参数，以及配合一个整数参数，git 就知道到底要 revert 哪一个 merge。（使用 git log 3826574510467c51e174db0f53b83e3542bc1 可以查看那次合并提交的两个提交 SHA 值。例如 自己分支合并到主分支，则第一个 SHA 是主分支的，第二个是自己分支，此处的指令即 revert 自己分支）
+</code></pre><hr>
+<blockquote>
+<p>修改提交</p>
+</blockquote>
+<pre><code>git rebase -i HEAD~3
+
+将看到 HEAD 到 HEAD~3 的提交
+将第一行的“pick”改成想要的指令，然后保存并退出。修改过的提交呈现退出状态。
+用 commit --amend 保存修改。
+现在已经 commit，但是 rebase 操作还没结束。若要通知这个提交的操作已经结束，请指定 --continue 选项执行 rebase。
+</code></pre><hr>
+<blockquote>
+<p>终止rebase的行动</p>
+</blockquote>
+<pre><code>git rebase --abort
+</code></pre><hr>
+<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><blockquote>
+<p>提交暂存区到仓库区</p>
+</blockquote>
+<pre><code>git commit -m [message]
+</code></pre><hr>
+<blockquote>
+<p>提交暂存区的指定文件到仓库区</p>
+</blockquote>
+<pre><code>git commit  [file1] [file2] ... -m [message]
+</code></pre><hr>
+<blockquote>
+<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
+</blockquote>
+<pre><code>git commit -a
+</code></pre><hr>
+<blockquote>
+<p>提交时显示所有diff信息</p>
+</blockquote>
+<pre><code>git commit -v
+</code></pre><hr>
+<blockquote>
+<p>修改最近一次的提交</p>
+</blockquote>
+<pre><code>git commit --amend
+</code></pre><hr>
+<blockquote>
+<p>重做上一次commit，并包括指定文件的新变化</p>
+</blockquote>
+<pre><code>git commit --amend [file1] [file2]...
+</code></pre><hr>
+<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><blockquote>
+<p>列出所有本地分支</p>
+</blockquote>
+<pre><code>git branch
+</code></pre><hr>
+<blockquote>
+<p>列出所有远程分支</p>
+</blockquote>
+<pre><code>git branch -r 
+</code></pre><hr>
+<blockquote>
+<p>列出所有分支</p>
+</blockquote>
+<pre><code>git branch -a
+</code></pre><hr>
+<blockquote>
+<p>切换分支</p>
+</blockquote>
+<pre><code>git checkout [branch]
+</code></pre><hr>
+<blockquote>
+<p>新建一个分支，并切换到该分支</p>
+</blockquote>
+<pre><code>git checkout -b [branch] 或 git branch [branch]; git checkout [branch]
+</code></pre><hr>
+<blockquote>
+<p>新建一个分支，指向指定commit</p>
+</blockquote>
+<pre><code>git branch [branch] [commit]
+</code></pre><hr>
+<blockquote>
+<p>推送分支</p>
+</blockquote>
+<pre><code>git push origin [branch]
+</code></pre><hr>
+<blockquote>
+<p>删除分支</p>
+</blockquote>
+<pre><code>git branch -d [branch]
+</code></pre><hr>
+<blockquote>
+<p>删除远程分支</p>
+</blockquote>
+<pre><code>git push origin --delete [branch]
+git branch -dr [remote/branch]
+</code></pre><hr>
+<blockquote>
+<p>清理其他人删除的远程</p>
+</blockquote>
+<pre><code>git remote prune origin
+</code></pre><hr>
+<blockquote>
+<p>将当前分支移到branch分支上</p>
+</blockquote>
+<pre><code>git reset --hard [branch]
+</code></pre><hr>
+<blockquote>
+<p>将一个本地分支重命名</p>
+</blockquote>
+<pre><code>git branch -m oldbranchname newbranchname
+</code></pre><hr>
+<blockquote>
+<p>将一个远程分支重命名(假设本地分支和远程对应分支名称相同)</p>
+</blockquote>
 <p>a. 重命名远程分支对应的本地分支</p>
-<p>git branch -m old-local-branch-name new-local-branch-name</p>
-<p>b. 删除远程分支</p>
-<p>git push origin  :old-local-branch-name</p>
-<p>c. 上传新命名的本地分支<br>git push origin  new-local-branch-name: new-local-branch-name<br>标签</p>
-<h1 id="列出所有tag"><a href="#列出所有tag" class="headerlink" title="列出所有tag"></a>列出所有tag</h1><p>$ git tag</p>
-<h1 id="新建一个tag在当前commit"><a href="#新建一个tag在当前commit" class="headerlink" title="新建一个tag在当前commit"></a>新建一个tag在当前commit</h1><p>$ git tag [tag]</p>
-<p>#新建一个tag在指定commit<br>$ git tag [tag] [commit]</p>
-<p>#删除本地tag<br>$ git tag -d [tag]</p>
-<p>#删除远程tag<br>$ git push origin :refs/tags/[tagName]</p>
-<p>#查看tag信息<br>$ git show [tag]</p>
-<p>#提交指定tag<br>$ git push [remote] [tag]</p>
-<p>#提交所有tag<br>$git push [remote] –tags</p>
-<p>#新建一个分支，指向某个tag<br>$ git checkout -b [branch] [tag]</p>
-<p>查看信息</p>
-<h1 id="显示有变更的文件"><a href="#显示有变更的文件" class="headerlink" title="显示有变更的文件"></a>显示有变更的文件</h1><p>$ git status</p>
-<h1 id="显示暂存区和工作区的差异"><a href="#显示暂存区和工作区的差异" class="headerlink" title="显示暂存区和工作区的差异"></a>显示暂存区和工作区的差异</h1><p>$ git diff</p>
-<h1 id="显示当前分支的版本历史"><a href="#显示当前分支的版本历史" class="headerlink" title="显示当前分支的版本历史"></a>显示当前分支的版本历史</h1><p>$ git log</p>
-<p>#显示commit历史，以及每次commit发生变更的文件<br>$ git log –stat</p>
-<p>#搜索提交历史，根据关键词<br>$ git log -S [keyword]</p>
-<p>#显示指定文件是什么人在什么时间修改过<br>$ git blame [file]</p>
-<h1 id="显示某次提交的元数据和内容变化"><a href="#显示某次提交的元数据和内容变化" class="headerlink" title="显示某次提交的元数据和内容变化"></a>显示某次提交的元数据和内容变化</h1><p>$ git show [commit]</p>
-<p>#显示当前分支的最近几次提交<br>$ git reflog<br>远程同步</p>
-<p>#显示某个远程仓库的信息<br>$ git remote show [remote]</p>
-<h1 id="取回远程仓库的变化，并与本地分支合并"><a href="#取回远程仓库的变化，并与本地分支合并" class="headerlink" title="取回远程仓库的变化，并与本地分支合并"></a>取回远程仓库的变化，并与本地分支合并</h1><p>$ git pull [remote] [branch]</p>
-<h1 id="上传本地指定分支到远程仓库"><a href="#上传本地指定分支到远程仓库" class="headerlink" title="上传本地指定分支到远程仓库"></a>上传本地指定分支到远程仓库</h1><p>$ git push [remote] [branch]</p>
-<p>技巧</p>
-<h1 id="忽略自己对工作目录中的文件修改"><a href="#忽略自己对工作目录中的文件修改" class="headerlink" title="忽略自己对工作目录中的文件修改"></a>忽略自己对工作目录中的文件修改</h1><p>$ git update-index –skip-worktree <filepath></filepath></p>
-<h1 id="列出工作目录中已被忽略修改的文件"><a href="#列出工作目录中已被忽略修改的文件" class="headerlink" title="列出工作目录中已被忽略修改的文件"></a>列出工作目录中已被忽略修改的文件</h1><p>$ git ls-files -v . | grep ^S</p>
-<p>#退出<br>$Esc-&gt;shift+:-&gt;wq</p>
-<p>刷新<br>F5</p>
-<p>#调出某一命令的帮助<br>例如：<br>$ git reset –help (调出reset的帮助)</p>
-<p>#修改已提交的作者<br>$git filter-branch –commit-filter \<br>‘if [ “$GIT_AUTHOR_NAME” = “your old name” ]; then \<br>export GIT_AUTHOR_NAME=”your correct name”;\<br>export GIT_AUTHOR_EMAIL= your correct email;\<br>export GIT_COMMITTER_NAME=” your correct name”;\<br>export GIT_COMMITTER_EMAIL= your correct email;\<br>fi;\<br>git commit-tree “$@”‘</p>
-<p>#假如上面一步执行的过于慢，可以执行下面的方法一个一个修改<br>$git rebase -i -p <some head="" before="" all="" of="" your="" bad="" commits=""></some></p>
-<p>Then mark all of your bad commits as “edit” in the rebase file. If you also want to change your first commit, you have to manually add it as first line in the rebase file (follow the format of the other lines). Then, when git asks you to amend each commit, do<br>$git commit –amend –author “New Author Name <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#101;&#x6d;&#x61;&#x69;&#x6c;&#64;&#97;&#100;&#100;&#x72;&#101;&#115;&#115;&#46;&#x63;&#111;&#109;">&#101;&#x6d;&#x61;&#x69;&#x6c;&#64;&#97;&#100;&#100;&#x72;&#101;&#115;&#115;&#46;&#x63;&#111;&#109;</a>“</p>
-<p> edit or just close the editor that opens, and then do<br>$git rebase –continue</p>
-<p>to continue the rebase.</p>
-<p>git merge zhanghaiyan/player-info –no-ff  当刚merge完master 又merge zhanghaiyan/player-info时是不可以直接merge的，要使用此命令</p>
-<p>git pull -r  在master分支上做了提交想git pull时要使用这个命令，即merge本地提交到下载下来的分支上面了</p>
-<p>git merge origin/master 本地分支合并最新的主分支</p>
-<p>git commit –amend   修改最近一次的提交</p>
-<p>git revert HEAD  取消提交</p>
-<p>使用 git config rebase.autoStash true 命令，作用是在执行rebase之前自动stash,之后再自动pop。<br>Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 –no-autostash 选项取消该标记的功能</p>
-<p>git reset –hard origin/master 本地分支直接同步到远程分支</p>
-<p>git reflog 查看所有操作</p>
+<pre><code>git branch -m old-local-branch-name new-local-branch-name
+</code></pre><p>b. 删除远程分支</p>
+<pre><code>git push origin  :old-local-branch-name
+</code></pre><p>c. 上传新命名的本地分支</p>
+<pre><code>git push origin  new-local-branch-name: new-local-branch-name
+</code></pre><hr>
+<blockquote>
+<p>在master分支上做了提交想git pull时要使用这个命令，即merge本地提交到下载下来的分支上面了</p>
+</blockquote>
+<pre><code>git pull -r
+</code></pre><blockquote>
+<p>当刚merge完master 又merge zhanghaiyan/player-info时是不可以直接merge的，要使用此命令</p>
+</blockquote>
+<pre><code>git merge zhanghaiyan/player-info --no-ff
+</code></pre><hr>
+<blockquote>
+<p>本地分支合并最新的主分支</p>
+</blockquote>
+<pre><code>git merge origin/master
+</code></pre><hr>
+<blockquote>
+<p>本地分支直接同步到远程分支</p>
+</blockquote>
+<pre><code>git reset --hard origin/master
+</code></pre><hr>
+<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><blockquote>
+<p>列出所有tag</p>
+</blockquote>
+<pre><code>git tag
+</code></pre><hr>
+<blockquote>
+<p>新建一个tag在当前commit</p>
+</blockquote>
+<pre><code>git tag [tag]
+</code></pre><hr>
+<blockquote>
+<p>新建一个tag在指定commit</p>
+</blockquote>
+<pre><code>git tag [tag] [commit]
+</code></pre><hr>
+<blockquote>
+<p>删除本地tag</p>
+</blockquote>
+<pre><code>git tag -d [tag]
+</code></pre><hr>
+<blockquote>
+<p>删除远程tag</p>
+</blockquote>
+<pre><code>git push origin :refs/tags/[tagName]
+</code></pre><hr>
+<blockquote>
+<p>查看tag信息</p>
+</blockquote>
+<pre><code>git show [tag]
+</code></pre><hr>
+<blockquote>
+<p>提交指定tag</p>
+</blockquote>
+<pre><code>git push [remote] [tag]
+</code></pre><hr>
+<blockquote>
+<p>提交所有tag</p>
+</blockquote>
+<pre><code>git push [remote] --tags
+</code></pre><hr>
+<blockquote>
+<p>新建一个分支，指向某个tag</p>
+</blockquote>
+<pre><code>git checkout -b [branch] [tag]
+</code></pre><hr>
+<h1 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h1><blockquote>
+<p>显示有变更的文件</p>
+</blockquote>
+<pre><code>git status
+</code></pre><hr>
+<blockquote>
+<p>显示暂存区和工作区的差异</p>
+</blockquote>
+<pre><code>git diff
+</code></pre><hr>
+<blockquote>
+<p>显示当前分支的版本历史</p>
+</blockquote>
+<pre><code>git log
+</code></pre><hr>
+<blockquote>
+<p>显示commit历史，以及每次commit发生变更的文件</p>
+</blockquote>
+<pre><code>git log --stat
+</code></pre><hr>
+<blockquote>
+<p>搜索提交历史，根据关键词</p>
+</blockquote>
+<pre><code>git log -S [keyword]
+</code></pre><hr>
+<blockquote>
+<p>显示指定文件是什么人在什么时间修改过</p>
+</blockquote>
+<pre><code>git blame [file]
+</code></pre><hr>
+<blockquote>
+<p>显示某次提交的元数据和内容变化</p>
+</blockquote>
+<pre><code>git show [commit]
+</code></pre><hr>
+<blockquote>
+<p>显示当前分支的最近几次提交</p>
+</blockquote>
+<pre><code>git reflog
+</code></pre><hr>
+<h1 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h1><blockquote>
+<p>显示某个远程仓库的信息</p>
+</blockquote>
+<pre><code>git remote show [remote]
+</code></pre><hr>
+<blockquote>
+<p>取回远程仓库的变化，并与本地分支合并</p>
+</blockquote>
+<pre><code>git pull [remote] [branch]
+</code></pre><hr>
+<blockquote>
+<p>上传本地指定分支到远程仓库</p>
+</blockquote>
+<pre><code>git push [remote] [branch]
+</code></pre><hr>
+<h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><blockquote>
+<p>忽略自己对工作目录中的文件修改</p>
+</blockquote>
+<pre><code>git update-index --skip-worktree &lt;filepath&gt;
+</code></pre><hr>
+<blockquote>
+<p>列出工作目录中已被忽略修改的文件</p>
+</blockquote>
+<pre><code>git ls-files -v . | grep ^S
+</code></pre><hr>
+<blockquote>
+<p>调出某一命令的帮助</p>
+</blockquote>
+<pre><code>git reset --help (例如：调出reset的帮助)
+</code></pre><hr>
+<blockquote>
+<p>修改已提交的作者</p>
+</blockquote>
+<pre><code>git filter-branch --commit-filter \
+&apos;if [ &quot;    GIT_AUTHOR_NAME&quot; = &quot;your old name&quot; ]; then \
+export GIT_AUTHOR_NAME=&quot;your correct name&quot;;\
+export GIT_AUTHOR_EMAIL= your correct email;\
+export GIT_COMMITTER_NAME=&quot; your correct name&quot;;\
+export GIT_COMMITTER_EMAIL= your correct email;\
+fi;\
+git commit-tree &quot;    @&quot;&apos;
+</code></pre><hr>
+<blockquote>
+<p>假如上面一步执行的过于慢，可以执行下面的方法一个一个修改</p>
+</blockquote>
+<pre><code>git rebase -i -p &lt;some HEAD before all of your bad commits&gt;
+
+Then mark all of your bad commits as &quot;edit&quot; in the rebase file. If you also want to change your first commit, you have to manually add it as first line in the rebase file (follow the format of the other lines). Then, when git asks you to amend each commit, do
+    git commit --amend --author &quot;New Author Name &lt;email@address.com&gt;&quot;
+
+edit or just close the editor that opens, and then do
+    git rebase --continue
+
+to continue the rebase.
+</code></pre><hr>
+<blockquote>
+<p>在执行 rebase 之前自动 stash ,之后再自动 pop</p>
+</blockquote>
+<pre><code>git config rebase.autoStash true 
+Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 --no-autostash 选项取消该标记的功能
+</code></pre><hr>
+<blockquote>
+<p>查看配置名字和邮箱</p>
+</blockquote>
+<pre><code>git config --list
+</code></pre><hr>
 
       
       
@@ -396,7 +695,7 @@
         <p><span>本文标题:</span><a href="/2018/06/05/Git/">Git 常用命令总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2018年06月05日 - 22时06分</p>
-        <p><span>最后更新:</span>2018年06月05日 - 22时11分</p>
+        <p><span>最后更新:</span>2018年06月05日 - 23时22分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/05/Git/" title="Git 常用命令总结">http://yoursite.com/2018/06/05/Git/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/05/Git/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -425,7 +724,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在当前目录新建一个-Git-代码库"><span class="toc-number">1.</span> <span class="toc-text">在当前目录新建一个 Git 代码库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个目录，将其初始化为-Git-代码库"><span class="toc-number">2.</span> <span class="toc-text">新建一个目录，将其初始化为 Git 代码库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载一个项目和它的整个代码历史"><span class="toc-number">3.</span> <span class="toc-text">下载一个项目和它的整个代码历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone-到指定目录"><span class="toc-number">4.</span> <span class="toc-text">clone 到指定目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone-时创建新的分支替代默认-Origin-HEAD-master"><span class="toc-number">5.</span> <span class="toc-text">clone 时创建新的分支替代默认 Origin HEAD(master)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone-远程分支（git-clone-命令默认的只会建立-master-分支）-想要-clone-指定的某一远程分支"><span class="toc-number">6.</span> <span class="toc-text">clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加指定文件到暂存区"><span class="toc-number">7.</span> <span class="toc-text">添加指定文件到暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加所有文件到暂存区"><span class="toc-number">8.</span> <span class="toc-text">添加所有文件到暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除指定文件，并且将这个改变添加到暂存区"><span class="toc-number">9.</span> <span class="toc-text">删除指定文件，并且将这个改变添加到暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#改名文件，并且将这个改名放入暂存区"><span class="toc-number">10.</span> <span class="toc-text">改名文件，并且将这个改名放入暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将工作区清空（针对新添加的文件）"><span class="toc-number">11.</span> <span class="toc-text">将工作区清空（针对新添加的文件）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将工作区清空（针对有改动的文件）"><span class="toc-number">12.</span> <span class="toc-text">将工作区清空（针对有改动的文件）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重置暂存区的指定文件，与上一次-commit-保持一致，但工作区不变"><span class="toc-number">13.</span> <span class="toc-text">重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重置暂存区与工作区，与上一次-commit-保持一致"><span class="toc-number">14.</span> <span class="toc-text">重置暂存区与工作区，与上一次 commit 保持一致</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中"><span class="toc-number">15.</span> <span class="toc-text">该条commit SHA号之后（时间作为参考点）的所有commit的修改都会退回到git暂存区中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该条commit-SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃，-缓冲区中不会存储这些修改"><span class="toc-number">16.</span> <span class="toc-text">该条commit SHA号之后（时间作为参考点）的所有commit的修改会被直接丢弃， 缓冲区中不会存储这些修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销已推送的commit"><span class="toc-number">17.</span> <span class="toc-text">撤销已推送的commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销已推送的-merge"><span class="toc-number">18.</span> <span class="toc-text">撤销已推送的 merge</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#终止rebase的行动"><span class="toc-number">19.</span> <span class="toc-text">终止rebase的行动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提交暂存区到仓库区"><span class="toc-number">20.</span> <span class="toc-text">提交暂存区到仓库区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提交暂存区的指定文件到仓库区"><span class="toc-number">21.</span> <span class="toc-text">提交暂存区的指定文件到仓库区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出所有本地分支"><span class="toc-number">22.</span> <span class="toc-text">列出所有本地分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出所有远程分支"><span class="toc-number">23.</span> <span class="toc-text">列出所有远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换分支"><span class="toc-number">24.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个分支，并切换到该分支"><span class="toc-number">25.</span> <span class="toc-text">新建一个分支，并切换到该分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个分支，指向指定commit"><span class="toc-number">26.</span> <span class="toc-text">新建一个分支，指向指定commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推送分支"><span class="toc-number">27.</span> <span class="toc-text">推送分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除分支"><span class="toc-number">28.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除远程分支"><span class="toc-number">29.</span> <span class="toc-text">删除远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#清理其他人删除的远程"><span class="toc-number">30.</span> <span class="toc-text">清理其他人删除的远程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将当前分支移到branch分支上"><span class="toc-number">31.</span> <span class="toc-text">将当前分支移到branch分支上</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出所有tag"><span class="toc-number">32.</span> <span class="toc-text">列出所有tag</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建一个tag在当前commit"><span class="toc-number">33.</span> <span class="toc-text">新建一个tag在当前commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示有变更的文件"><span class="toc-number">34.</span> <span class="toc-text">显示有变更的文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示暂存区和工作区的差异"><span class="toc-number">35.</span> <span class="toc-text">显示暂存区和工作区的差异</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示当前分支的版本历史"><span class="toc-number">36.</span> <span class="toc-text">显示当前分支的版本历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示某次提交的元数据和内容变化"><span class="toc-number">37.</span> <span class="toc-text">显示某次提交的元数据和内容变化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#取回远程仓库的变化，并与本地分支合并"><span class="toc-number">38.</span> <span class="toc-text">取回远程仓库的变化，并与本地分支合并</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上传本地指定分支到远程仓库"><span class="toc-number">39.</span> <span class="toc-text">上传本地指定分支到远程仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#忽略自己对工作目录中的文件修改"><span class="toc-number">40.</span> <span class="toc-text">忽略自己对工作目录中的文件修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列出工作目录中已被忽略修改的文件"><span class="toc-number">41.</span> <span class="toc-text">列出工作目录中已被忽略修改的文件</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#仓库"><span class="toc-number">1.</span> <span class="toc-text">仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加-删除文件"><span class="toc-number">2.</span> <span class="toc-text">添加/删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销"><span class="toc-number">3.</span> <span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提交"><span class="toc-number">4.</span> <span class="toc-text">提交</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支"><span class="toc-number">5.</span> <span class="toc-text">分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签"><span class="toc-number">6.</span> <span class="toc-text">标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看信息"><span class="toc-number">7.</span> <span class="toc-text">查看信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程同步"><span class="toc-number">8.</span> <span class="toc-text">远程同步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#技巧"><span class="toc-number">9.</span> <span class="toc-text">技巧</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
