@@ -5,18 +5,18 @@
   
   <title>Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别 | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在写代码的时候，遇到了三个不太清楚的 API（Behaviour.enabled、Behaviour.isActiveAndEnabled 和 GameObject.activeInHierarchy），去看了 unity 文档，理解的也不是很清楚，于是自己去研究了一下这三个 API 的差异。">
+  <meta name="description" content="Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
 <meta name="keywords" content="Unity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
 <meta property="og:url" content="http://yoursite.com/2018/06/10/UnityKnowledgePoint1/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="最近在写代码的时候，遇到了三个不太清楚的 API（Behaviour.enabled、Behaviour.isActiveAndEnabled 和 GameObject.activeInHierarchy），去看了 unity 文档，理解的也不是很清楚，于是自己去研究了一下这三个 API 的差异。">
+<meta property="og:description" content="Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-10T11:29:15.331Z">
+<meta property="og:updated_time" content="2018-06-10T11:34:48.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
-<meta name="twitter:description" content="最近在写代码的时候，遇到了三个不太清楚的 API（Behaviour.enabled、Behaviour.isActiveAndEnabled 和 GameObject.activeInHierarchy），去看了 unity 文档，理解的也不是很清楚，于是自己去研究了一下这三个 API 的差异。">
+<meta name="twitter:description" content="Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -252,7 +252,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>最近在写代码的时候，遇到了三个不太清楚的 API（Behaviour.enabled、Behaviour.isActiveAndEnabled 和 GameObject.activeInHierarchy），去看了 unity 文档，理解的也不是很清楚，于是自己去研究了一下这三个 API 的差异。<br><a id="more"></a></p>
+        <p>Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别<br><a id="more"></a><br>最近在写代码的时候，遇到了三个不太清楚的 API（Behaviour.enabled、Behaviour.isActiveAndEnabled 和 GameObject.activeInHierarchy），去看了 unity 文档，理解的也不是很清楚，于是自己去研究了一下这三个 API 的差异。</p>
+<hr>
 <h1 id="一-关于-Behaviour-enabled"><a href="#一-关于-Behaviour-enabled" class="headerlink" title="一.关于 Behaviour.enabled"></a>一.关于 Behaviour.enabled</h1><p>Unity 官方文档介绍：Enabled Behaviours are Updated, disabled Behaviours are not.</p>
 <p>使用这个 API，分别查看脚本所绑定 GameObject 和脚本激活与失活状态下，变量的情况，结果如下：</p>
 <pre><code>1.当 GameObject = Active，Script = Enabled 的时候，Behaviour.enabled = true
@@ -333,7 +334,7 @@
         <p><span>本文标题:</span><a href="/2018/06/10/UnityKnowledgePoint1/">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2018年06月10日 - 18时23分</p>
-        <p><span>最后更新:</span>2018年06月10日 - 19时29分</p>
+        <p><span>最后更新:</span>2018年06月10日 - 19时34分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/10/UnityKnowledgePoint1/" title="Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">http://yoursite.com/2018/06/10/UnityKnowledgePoint1/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/10/UnityKnowledgePoint1/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -348,6 +349,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2018/06/18/UnityAndroidSDK/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Unity 接入 Android SDK 相关
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/05/Git/" id="article-nav-older" class="article-nav-link-wrap">
@@ -428,7 +438,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/06/18/UnityAndroidSDK/" title="上一篇: Unity 接入 Android SDK 相关">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -437,7 +449,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/UnityKnowledgePoint1/">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/Git/">Git 常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/《调试九法》读书笔记/">《调试九法》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/AssetBundleManual1/">U3D AssetBundle 官方文档（翻译版）学习笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/UnityKnowledgePoint1/">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/Git/">Git 常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/《调试九法》读书笔记/">《调试九法》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/AssetBundleManual1/">U3D AssetBundle 官方文档（翻译版）学习笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

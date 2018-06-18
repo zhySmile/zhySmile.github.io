@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git 常用命令总结 | zhySmile</title>
+  <title>Unity 接入 Android SDK 相关 | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Git 常用命令总结">
-<meta name="keywords" content="version management">
+  <meta name="description" content="SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合 需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节二、将示例 demo 看一遍，查看其调用方式，回调等等三、接下来步入正轨，开始着">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 常用命令总结">
-<meta property="og:url" content="http://yoursite.com/2018/06/05/Git/index.html">
+<meta property="og:title" content="Unity 接入 Android SDK 相关">
+<meta property="og:url" content="http://yoursite.com/2018/06/18/UnityAndroidSDK/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="Git 常用命令总结">
+<meta property="og:description" content="SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合 需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节二、将示例 demo 看一遍，查看其调用方式，回调等等三、接下来步入正轨，开始着">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T15:22:12.843Z">
+<meta property="og:updated_time" content="2018-06-18T12:47:42.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git 常用命令总结">
-<meta name="twitter:description" content="Git 常用命令总结">
+<meta name="twitter:title" content="Unity 接入 Android SDK 相关">
+<meta name="twitter:description" content="SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合 需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节二、将示例 demo 看一遍，查看其调用方式，回调等等三、接下来步入正轨，开始着">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -210,11 +209,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Git" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-UnityAndroidSDK" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/05/Git/" class="article-date">
-      <time datetime="2018-06-05T14:06:58.102Z" itemprop="datePublished">2018-06-05</time>
+      <a href="/2018/06/18/UnityAndroidSDK/" class="article-date">
+      <time datetime="2018-06-18T12:00:10.000Z" itemprop="datePublished">2018-06-18</time>
 </a>
     </div>
   
@@ -227,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Git 常用命令总结
+      Unity 接入 Android SDK 相关
     </h1>
   
 
@@ -235,16 +234,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/版本管理/">版本管理</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/version-management/">version management</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -252,391 +243,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Git 常用命令总结<br><a id="more"></a></p>
-<h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><blockquote>
-<p>在当前目录新建一个 Git 代码库  </p>
-</blockquote>
-<pre><code>git init  
-</code></pre><hr>
-<blockquote>
-<p>新建一个目录，将其初始化为 Git 代码库</p>
-</blockquote>
-<pre><code>git init [project-name]
-</code></pre><hr>
-<blockquote>
-<p>下载一个项目和它的整个代码历史  </p>
-</blockquote>
-<pre><code>git clone [url]
-</code></pre><hr>
-<blockquote>
-<p>clone 到指定目录  </p>
-</blockquote>
-<pre><code>git clone XXX.git &quot;指定目录&quot;
-</code></pre><hr>
-<blockquote>
-<p>clone 时创建新的分支替代默认 Origin HEAD(master)</p>
-</blockquote>
-<pre><code>git clone -b [new_branch_name] xxx.git
-</code></pre><hr>
-<blockquote>
-<p>clone 远程分支（git clone 命令默认的只会建立 master 分支）,想要 clone 指定的某一远程分支</p>
-</blockquote>
-<pre><code>git checkout -t origin/dev 或 git checkout -b dev origin/dev
-</code></pre><hr>
-<h1 id="添加-删除文件"><a href="#添加-删除文件" class="headerlink" title="添加/删除文件"></a>添加/删除文件</h1><blockquote>
-<p>添加指定文件到暂存区</p>
-</blockquote>
-<pre><code>git add [file or dir]
-</code></pre><hr>
-<blockquote>
-<p> 添加所有文件到暂存区</p>
-</blockquote>
-<pre><code>git add .
-</code></pre><hr>
-<blockquote>
-<p>删除指定文件，并且将这个改变添加到暂存区</p>
-</blockquote>
-<pre><code>git rm --cached [file]
-</code></pre><hr>
-<blockquote>
-<p> 改名文件，并且将这个改名放入暂存区</p>
-</blockquote>
-<pre><code>git mv [file-original] [file-renamed]
-</code></pre><hr>
-<blockquote>
-<p> 将工作区清空（针对新添加的文件）</p>
-</blockquote>
-<pre><code>git clean -fd
-</code></pre><hr>
-<blockquote>
-<p> 将工作区清空（针对有改动的文件）</p>
-</blockquote>
-<pre><code>git checkout .
-</code></pre><hr>
-<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><blockquote>
-<p> 重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</p>
-</blockquote>
-<pre><code>git reset [file]
-</code></pre><hr>
-<blockquote>
-<p>重置暂存区与工作区，与上一次 commit 保持一致</p>
-</blockquote>
-<pre><code>git reset --hard
-git reset --hard HEAD^ 撤消上一次提交
-git reset --hard HEAD~3  撤销三次提交
-</code></pre><hr>
-<blockquote>
-<p> 该条 commit SHA 号之后（时间作为参考点）的所有 commit 的修改都会退回到 git 暂存区中</p>
-</blockquote>
-<pre><code>git reset --soft [SHA]
-</code></pre><hr>
-<blockquote>
-<p> 该条 commit SHA 号之后（时间作为参考点）的所有 commit 的修改会被直接丢弃， 缓冲区中不会存储这些修改</p>
-</blockquote>
-<pre><code> git reset --hard [SHA]
-
-注意：这样的重置是直接在本地的修改，无法提交到远程服务器，如果直接丢弃的内容已经被推到远程服务器上了，则会造成本地和服务器无法同步的问题，即 git reset --hard 只能针对本地操作，不能针对远程服务器进行同样操作。如果从本地删掉的内容没有推到服务器上，则不会有副作用，如果被推到服务器，则下次本地和服务器进行同步时，这部分删掉的内容仍然会回来。（其实这个问题则可以很好的被 git revert 命令解决，使用g it revert [SHA] 号，该命令撤销对某个 commit 的提交，这一撤销动作会作为一个新的修改存储起来，这样，当你和服务器同步时，就不会产生什么副作用。）
-</code></pre><hr>
-<blockquote>
-<p> 撤销已推送的commit</p>
-</blockquote>
-<pre><code>  git revert [SHA]
-
-通常情况下，上面这条revert命令会让程序员修改注释，这时候程序员应该标注revert的原因，假设程序员就想使用默认的注释，可以在命令中加上 --no-edit 参数。另一个重要的参数是 -n 或者 --no-commit，应用这个参数会让 revert 改动只限于程序员的本地仓库，而不自动进行 commit，如果程序员想在 revert 之前进行更多的改动，或者想要 revert 多个 commit，这个参数尤其好用
-</code></pre><hr>
-<blockquote>
-<p> 撤销已推送的 merge</p>
-</blockquote>
-<pre><code>  git revert 3826574510467c51e174db0f53b83e3542bc1c6f -m 2（例如）
-
-对于 revert merge 的情况，程序员需要指出 revert 这个 merge commit 中的哪一个。通过 -m 或者 --mainline 参数，以及配合一个整数参数，git 就知道到底要 revert 哪一个 merge。（使用 git log 3826574510467c51e174db0f53b83e3542bc1 可以查看那次合并提交的两个提交 SHA 值。例如 自己分支合并到主分支，则第一个 SHA 是主分支的，第二个是自己分支，此处的指令即 revert 自己分支）
-</code></pre><hr>
-<blockquote>
-<p>修改提交</p>
-</blockquote>
-<pre><code>git rebase -i HEAD~3
-
-将看到 HEAD 到 HEAD~3 的提交
-将第一行的“pick”改成想要的指令，然后保存并退出。修改过的提交呈现退出状态。
-用 commit --amend 保存修改。
-现在已经 commit，但是 rebase 操作还没结束。若要通知这个提交的操作已经结束，请指定 --continue 选项执行 rebase。
-</code></pre><hr>
-<blockquote>
-<p>终止rebase的行动</p>
-</blockquote>
-<pre><code>git rebase --abort
-</code></pre><hr>
-<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><blockquote>
-<p>提交暂存区到仓库区</p>
-</blockquote>
-<pre><code>git commit -m [message]
-</code></pre><hr>
-<blockquote>
-<p>提交暂存区的指定文件到仓库区</p>
-</blockquote>
-<pre><code>git commit  [file1] [file2] ... -m [message]
-</code></pre><hr>
-<blockquote>
-<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
-</blockquote>
-<pre><code>git commit -a
-</code></pre><hr>
-<blockquote>
-<p>提交时显示所有diff信息</p>
-</blockquote>
-<pre><code>git commit -v
-</code></pre><hr>
-<blockquote>
-<p>修改最近一次的提交</p>
-</blockquote>
-<pre><code>git commit --amend
-</code></pre><hr>
-<blockquote>
-<p>重做上一次commit，并包括指定文件的新变化</p>
-</blockquote>
-<pre><code>git commit --amend [file1] [file2]...
-</code></pre><hr>
-<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><blockquote>
-<p>列出所有本地分支</p>
-</blockquote>
-<pre><code>git branch
-</code></pre><hr>
-<blockquote>
-<p>列出所有远程分支</p>
-</blockquote>
-<pre><code>git branch -r 
-</code></pre><hr>
-<blockquote>
-<p>列出所有分支</p>
-</blockquote>
-<pre><code>git branch -a
-</code></pre><hr>
-<blockquote>
-<p>切换分支</p>
-</blockquote>
-<pre><code>git checkout [branch]
-</code></pre><hr>
-<blockquote>
-<p>新建一个分支，并切换到该分支</p>
-</blockquote>
-<pre><code>git checkout -b [branch] 或 git branch [branch]; git checkout [branch]
-</code></pre><hr>
-<blockquote>
-<p>新建一个分支，指向指定commit</p>
-</blockquote>
-<pre><code>git branch [branch] [commit]
-</code></pre><hr>
-<blockquote>
-<p>推送分支</p>
-</blockquote>
-<pre><code>git push origin [branch]
-</code></pre><hr>
-<blockquote>
-<p>删除分支</p>
-</blockquote>
-<pre><code>git branch -d [branch]
-</code></pre><hr>
-<blockquote>
-<p>删除远程分支</p>
-</blockquote>
-<pre><code>git push origin --delete [branch]
-git branch -dr [remote/branch]
-</code></pre><hr>
-<blockquote>
-<p>清理其他人删除的远程</p>
-</blockquote>
-<pre><code>git remote prune origin
-</code></pre><hr>
-<blockquote>
-<p>将当前分支移到branch分支上</p>
-</blockquote>
-<pre><code>git reset --hard [branch]
-</code></pre><hr>
-<blockquote>
-<p>将一个本地分支重命名</p>
-</blockquote>
-<pre><code>git branch -m oldbranchname newbranchname
-</code></pre><hr>
-<blockquote>
-<p>将一个远程分支重命名(假设本地分支和远程对应分支名称相同)</p>
-</blockquote>
-<p>a. 重命名远程分支对应的本地分支</p>
-<pre><code>git branch -m old-local-branch-name new-local-branch-name
-</code></pre><p>b. 删除远程分支</p>
-<pre><code>git push origin  :old-local-branch-name
-</code></pre><p>c. 上传新命名的本地分支</p>
-<pre><code>git push origin  new-local-branch-name: new-local-branch-name
-</code></pre><hr>
-<blockquote>
-<p>在master分支上做了提交想git pull时要使用这个命令，即merge本地提交到下载下来的分支上面了</p>
-</blockquote>
-<pre><code>git pull -r
-</code></pre><blockquote>
-<p>当刚merge完master 又merge zhanghaiyan/player-info时是不可以直接merge的，要使用此命令</p>
-</blockquote>
-<pre><code>git merge zhanghaiyan/player-info --no-ff
-</code></pre><hr>
-<blockquote>
-<p>本地分支合并最新的主分支</p>
-</blockquote>
-<pre><code>git merge origin/master
-</code></pre><hr>
-<blockquote>
-<p>本地分支直接同步到远程分支</p>
-</blockquote>
-<pre><code>git reset --hard origin/master
-</code></pre><hr>
-<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><blockquote>
-<p>列出所有tag</p>
-</blockquote>
-<pre><code>git tag
-</code></pre><hr>
-<blockquote>
-<p>新建一个tag在当前commit</p>
-</blockquote>
-<pre><code>git tag [tag]
-</code></pre><hr>
-<blockquote>
-<p>新建一个tag在指定commit</p>
-</blockquote>
-<pre><code>git tag [tag] [commit]
-</code></pre><hr>
-<blockquote>
-<p>删除本地tag</p>
-</blockquote>
-<pre><code>git tag -d [tag]
-</code></pre><hr>
-<blockquote>
-<p>删除远程tag</p>
-</blockquote>
-<pre><code>git push origin :refs/tags/[tagName]
-</code></pre><hr>
-<blockquote>
-<p>查看tag信息</p>
-</blockquote>
-<pre><code>git show [tag]
-</code></pre><hr>
-<blockquote>
-<p>提交指定tag</p>
-</blockquote>
-<pre><code>git push [remote] [tag]
-</code></pre><hr>
-<blockquote>
-<p>提交所有tag</p>
-</blockquote>
-<pre><code>git push [remote] --tags
-</code></pre><hr>
-<blockquote>
-<p>新建一个分支，指向某个tag</p>
-</blockquote>
-<pre><code>git checkout -b [branch] [tag]
-</code></pre><hr>
-<h1 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h1><blockquote>
-<p>显示有变更的文件</p>
-</blockquote>
-<pre><code>git status
-</code></pre><hr>
-<blockquote>
-<p>显示暂存区和工作区的差异</p>
-</blockquote>
-<pre><code>git diff
-</code></pre><hr>
-<blockquote>
-<p>显示当前分支的版本历史</p>
-</blockquote>
-<pre><code>git log
-</code></pre><hr>
-<blockquote>
-<p>显示commit历史，以及每次commit发生变更的文件</p>
-</blockquote>
-<pre><code>git log --stat
-</code></pre><hr>
-<blockquote>
-<p>搜索提交历史，根据关键词</p>
-</blockquote>
-<pre><code>git log -S [keyword]
-</code></pre><hr>
-<blockquote>
-<p>显示指定文件是什么人在什么时间修改过</p>
-</blockquote>
-<pre><code>git blame [file]
-</code></pre><hr>
-<blockquote>
-<p>显示某次提交的元数据和内容变化</p>
-</blockquote>
-<pre><code>git show [commit]
-</code></pre><hr>
-<blockquote>
-<p>显示当前分支的最近几次提交</p>
-</blockquote>
-<pre><code>git reflog
-</code></pre><hr>
-<h1 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h1><blockquote>
-<p>显示某个远程仓库的信息</p>
-</blockquote>
-<pre><code>git remote show [remote]
-</code></pre><hr>
-<blockquote>
-<p>取回远程仓库的变化，并与本地分支合并</p>
-</blockquote>
-<pre><code>git pull [remote] [branch]
-</code></pre><hr>
-<blockquote>
-<p>上传本地指定分支到远程仓库</p>
-</blockquote>
-<pre><code>git push [remote] [branch]
-</code></pre><hr>
-<h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><blockquote>
-<p>忽略自己对工作目录中的文件修改</p>
-</blockquote>
-<pre><code>git update-index --skip-worktree &lt;filepath&gt;
-</code></pre><hr>
-<blockquote>
-<p>列出工作目录中已被忽略修改的文件</p>
-</blockquote>
-<pre><code>git ls-files -v . | grep ^S
-</code></pre><hr>
-<blockquote>
-<p>调出某一命令的帮助</p>
-</blockquote>
-<pre><code>git reset --help (例如：调出reset的帮助)
-</code></pre><hr>
-<blockquote>
-<p>修改已提交的作者</p>
-</blockquote>
-<pre><code>git filter-branch --commit-filter \
-&apos;if [ &quot;    GIT_AUTHOR_NAME&quot; = &quot;your old name&quot; ]; then \
-export GIT_AUTHOR_NAME=&quot;your correct name&quot;;\
-export GIT_AUTHOR_EMAIL= your correct email;\
-export GIT_COMMITTER_NAME=&quot; your correct name&quot;;\
-export GIT_COMMITTER_EMAIL= your correct email;\
-fi;\
-git commit-tree &quot;    @&quot;&apos;
-</code></pre><hr>
-<blockquote>
-<p>假如上面一步执行的过于慢，可以执行下面的方法一个一个修改</p>
-</blockquote>
-<pre><code>git rebase -i -p &lt;some HEAD before all of your bad commits&gt;
-
-Then mark all of your bad commits as &quot;edit&quot; in the rebase file. If you also want to change your first commit, you have to manually add it as first line in the rebase file (follow the format of the other lines). Then, when git asks you to amend each commit, do
-    git commit --amend --author &quot;New Author Name &lt;email@address.com&gt;&quot;
-
-edit or just close the editor that opens, and then do
-    git rebase --continue
-
-to continue the rebase.
-</code></pre><hr>
-<blockquote>
-<p>在执行 rebase 之前自动 stash ,之后再自动 pop</p>
-</blockquote>
-<pre><code>git config rebase.autoStash true 
-Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 --no-autostash 选项取消该标记的功能
-</code></pre><hr>
-<blockquote>
-<p>查看配置名字和邮箱</p>
-</blockquote>
-<pre><code>git config --list
-</code></pre><hr>
+        <p>SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合</p>
+<p>需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）<br>一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节<br>二、将示例 demo 看一遍，查看其调用方式，回调等等<br>三、接下来步入正轨，开始着手接入</p>
+<p>Tips：为了调试的方便，可以先用一个测试小项目接入 SDK，节省调试成本和其余部分的影响，单纯的去测试 SDK 接入，待测试项目通过，再去接入项目内。</p>
+<p>接入的SDK 一般分为两种：一种是封装好的适用于 Unity 的。这种就很简单了，只需要去看一下有哪些接口，直接去调用相应的接口就可以了。 但是更多的是另一种，纯 Android 的，这就需要我们去写一些 Android 部分，主要处理 Unity 与 Android 通信的内容。</p>
+<p>对于接入纯 Android 的 SDK，我接过的流程如下：<br>1.创建 Android 工程，写 java 脚本，处理 Unity 与 Android 通信。<br>2.将 java 脚本打成 jar 包，放入 Unity 工程。<br>3.Unity 工程里去调用对应方法。</p>
+<p>关于 Unity 与 Android 交互：</p>
+<p>1.处理 Unity 接收 Android 回调：<br>UnityPlayer.UnitySendMessage(_unityCallBackObjectName, “LoginCancelCallBack”, “”);<br>参数1:GameObject名称，参数2：函数名，参数3:字符串参数。<br>注意：物体上不存在名称为参数2的函数，不会报错。参数3只能传一个字符串参数，不能传多个，如果需要传多个参数，只能分几个函数调用，或者字符串用特殊字符合并传递再拆分接收。但是参数3不能为null，否则会强制退出。</p>
+<p>2.处理 Unity 调用 Android 函数：<br>AndroidJavaClass jc = new AndroidJavaClass(“com.unity3d.player.UnityPlayer”);<br>AndroidJavaObject jo = jc.GetStatic<androidjavaobject>(“currentActivity”);<br>jo.Call(“Test”);//调用 jar 包的 currentActivity 里的 Test 方法</androidjavaobject></p>
+<p>以上就是 Unity 接入 Android SDK 的一个大致流程，实际接入的时候可能还会碰到一些奇奇怪怪的其他问题，这就需要和相应的 SDK 客服人员去沟通，接入 SDK 麻烦的地方就在于文档不清楚，沟通不便捷，调试不方便。只能说一句 Good Luck.</p>
 
       
       
@@ -692,13 +307,13 @@ Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 --no-autostash 选�
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/05/Git/">Git 常用命令总结</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK 相关</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
-        <p><span>发布时间:</span>2018年06月05日 - 22时06分</p>
-        <p><span>最后更新:</span>2018年06月05日 - 23时22分</p>
+        <p><span>发布时间:</span>2018年06月18日 - 20时00分</p>
+        <p><span>最后更新:</span>2018年06月18日 - 20时47分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/05/Git/" title="Git 常用命令总结">http://yoursite.com/2018/06/05/Git/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/05/Git/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/18/UnityAndroidSDK/" title="Unity 接入 Android SDK 相关">http://yoursite.com/2018/06/18/UnityAndroidSDK/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/18/UnityAndroidSDK/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -711,18 +326,9 @@ Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 --no-autostash 选�
 
 <nav id="article-nav">
   
-    <a href="/2018/06/10/UnityKnowledgePoint1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/27/《调试九法》读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">《调试九法》读书笔记</div>
+    <a href="/2018/06/10/UnityKnowledgePoint1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -733,7 +339,7 @@ Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 --no-autostash 选�
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#仓库"><span class="toc-number">1.</span> <span class="toc-text">仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加-删除文件"><span class="toc-number">2.</span> <span class="toc-text">添加/删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销"><span class="toc-number">3.</span> <span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提交"><span class="toc-number">4.</span> <span class="toc-text">提交</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支"><span class="toc-number">5.</span> <span class="toc-text">分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签"><span class="toc-number">6.</span> <span class="toc-text">标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看信息"><span class="toc-number">7.</span> <span class="toc-text">查看信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程同步"><span class="toc-number">8.</span> <span class="toc-text">远程同步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#技巧"><span class="toc-number">9.</span> <span class="toc-text">技巧</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -799,13 +405,11 @@ Git 1.8.4之后增加 rebase.autoStash 命令，在2.7引入 --no-autostash 选�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/10/UnityKnowledgePoint1/" title="上一篇: Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/05/27/《调试九法》读书笔记/" title="下一篇: 《调试九法》读书笔记">
+            <a href="/2018/06/10/UnityKnowledgePoint1/" title="下一篇: Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
                 <i class="fa fa-angle-right"></i>
             </a>
         
