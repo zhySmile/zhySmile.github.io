@@ -141,7 +141,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/AssetBundle/" style="font-size: 10px;">AssetBundle</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/U3D/" style="font-size: 10px;">U3D</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/version-management/" style="font-size: 10px;">version management</a>
+                        <a href="/tags/AssetBundle/" style="font-size: 10px;">AssetBundle</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/Unity、API/" style="font-size: 10px;">Unity、API</a> <a href="/tags/Unity、Android、SDK/" style="font-size: 10px;">Unity、Android、SDK</a> <a href="/tags/version-management/" style="font-size: 10px;">version management</a>
                     </div>
                 </section>
                 
@@ -217,7 +217,7 @@
   
     <div class="article-meta">
       <a href="/2018/06/18/UnityAndroidSDK/" class="article-date">
-      <time datetime="2018-06-18T12:00:10.000Z" itemprop="datePublished">2018-06-18</time>
+      <time datetime="2018-06-18T12:00:10.900Z" itemprop="datePublished">2018-06-18</time>
 </a>
     </div>
   
@@ -230,7 +230,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK 相关</a>
+      <a class="article-title" href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK</a>
     </h1>
   
 
@@ -240,16 +240,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合</p>
-<p>需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）<br>一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节<br>二、将示例 demo 看一遍，查看其调用方式，回调等等<br>三、接下来步入正轨，开始着手接入</p>
-<p>Tips：为了调试的方便，可以先用一个测试小项目接入 SDK，节省调试成本和其余部分的影响，单纯的去测试 SDK 接入，待测试项目通过，再去接入项目内。</p>
-<p>接入的SDK 一般分为两种：一种是封装好的适用于 Unity 的。这种就很简单了，只需要去看一下有哪些接口，直接去调用相应的接口就可以了。 但是更多的是另一种，纯 Android 的，这就需要我们去写一些 Android 部分，主要处理 Unity 与 Android 通信的内容。</p>
-<p>对于接入纯 Android 的 SDK，我接过的流程如下：<br>1.创建 Android 工程，写 java 脚本，处理 Unity 与 Android 通信。<br>2.将 java 脚本打成 jar 包，放入 Unity 工程。<br>3.Unity 工程里去调用对应方法。</p>
-<p>关于 Unity 与 Android 交互：</p>
-<p>1.处理 Unity 接收 Android 回调：<br>UnityPlayer.UnitySendMessage(_unityCallBackObjectName, “LoginCancelCallBack”, “”);<br>参数1:GameObject名称，参数2：函数名，参数3:字符串参数。<br>注意：物体上不存在名称为参数2的函数，不会报错。参数3只能传一个字符串参数，不能传多个，如果需要传多个参数，只能分几个函数调用，或者字符串用特殊字符合并传递再拆分接收。但是参数3不能为null，否则会强制退出。</p>
-<p>2.处理 Unity 调用 Android 函数：<br>AndroidJavaClass jc = new AndroidJavaClass(“com.unity3d.player.UnityPlayer”);<br>AndroidJavaObject jo = jc.GetStatic<androidjavaobject>(“currentActivity”);<br>jo.Call(“Test”);//调用 jar 包的 currentActivity 里的 Test 方法</androidjavaobject></p>
-<p>以上就是 Unity 接入 Android SDK 的一个大致流程，实际接入的时候可能还会碰到一些奇奇怪怪的其他问题，这就需要和相应的 SDK 客服人员去沟通，接入 SDK 麻烦的地方就在于文档不清楚，沟通不便捷，调试不方便。只能说一句 Good Luck.</p>
-
+              <p>Unity 接入 Android SDK<br>
+          
       
       
     </div>
@@ -257,8 +249,20 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity、Android、SDK/">Unity、Android、SDK</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/06/18/UnityAndroidSDK/#more">点我 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -313,13 +317,13 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Unity、API/">Unity、API</a>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity、API/">Unity、API</a></li></ul>
     </div>
 
       
@@ -514,13 +518,13 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享U3D/">技术分享U3D</a>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AssetBundle/">AssetBundle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/U3D/">U3D</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AssetBundle/">AssetBundle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
     </div>
 
       
