@@ -3,20 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Unity 接入 Android SDK | zhySmile</title>
+  <title>《人月神话》读书笔记（上） | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Unity 接入 Android SDK">
-<meta name="keywords" content="Unity、Android、SDK">
+  <meta name="description" content="《人月神话》读书笔记（上）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity 接入 Android SDK">
-<meta property="og:url" content="http://yoursite.com/2018/06/18/UnityAndroidSDK/index.html">
+<meta property="og:title" content="《人月神话》读书笔记（上）">
+<meta property="og:url" content="http://yoursite.com/2018/06/24/《人月神话》读书笔记/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="Unity 接入 Android SDK">
+<meta property="og:description" content="《人月神话》读书笔记（上）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-18T13:00:21.693Z">
+<meta property="og:image" content="http://yoursite.com/rysh/1.png">
+<meta property="og:image" content="http://yoursite.com/rysh/2.png">
+<meta property="og:image" content="http://yoursite.com/rysh/3.png">
+<meta property="og:image" content="http://yoursite.com/rysh/4.png">
+<meta property="og:updated_time" content="2018-06-24T14:54:22.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity 接入 Android SDK">
-<meta name="twitter:description" content="Unity 接入 Android SDK">
+<meta name="twitter:title" content="《人月神话》读书笔记（上）">
+<meta name="twitter:description" content="《人月神话》读书笔记（上）">
+<meta name="twitter:image" content="http://yoursite.com/rysh/1.png">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -210,11 +214,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-UnityAndroidSDK" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《人月神话》读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/18/UnityAndroidSDK/" class="article-date">
-      <time datetime="2018-06-18T12:00:10.900Z" itemprop="datePublished">2018-06-18</time>
+      <a href="/2018/06/24/《人月神话》读书笔记/" class="article-date">
+      <time datetime="2018-06-24T12:20:19.275Z" itemprop="datePublished">2018-06-24</time>
 </a>
     </div>
   
@@ -227,7 +231,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unity 接入 Android SDK
+      《人月神话》读书笔记（上）
     </h1>
   
 
@@ -236,15 +240,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity、Android、SDK/">Unity、Android、SDK</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -252,14 +252,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Unity 接入 Android SDK<br><a id="more"></a><br>SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合</p>
-<p>需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）<br>一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节<br>二、将示例 demo 看一遍，查看其调用方式，回调等等<br>三、接下来步入正轨，开始着手接入</p>
-<p>Tips：为了调试的方便，可以先用一个测试小项目接入 SDK，节省调试成本和其余部分的影响，单纯的去测试 SDK 接入，待测试项目通过，再去接入项目内。</p>
-<p>接入的SDK 一般分为两种：一种是封装好的适用于 Unity 的。这种就很简单了，只需要去看一下有哪些接口，直接去调用相应的接口就可以了。 但是更多的是另一种，纯 Android 的，这就需要我们去写一些 Android 部分，主要处理 Unity 与 Android 通信的内容。</p>
-<p>对于接入纯 Android 的 SDK，我接过的流程如下：<br>1.创建 Android 工程，写 java 脚本，处理 Unity 与 Android 通信。<br>2.将 java 脚本打成 jar 包，放入 Unity 工程。<br>3.Unity 工程里去调用对应方法。</p>
-<h3 id="关于-Unity-与-Android-交互："><a href="#关于-Unity-与-Android-交互：" class="headerlink" title="关于 Unity 与 Android 交互："></a>关于 Unity 与 Android 交互：</h3><p>1.处理 Unity 接收 Android 回调：<br>UnityPlayer.UnitySendMessage(_unityCallBackObjectName, “LoginCancelCallBack”, “”);<br>参数1:GameObject名称，参数2：函数名，参数3:字符串参数。<br>注意：物体上不存在名称为参数2的函数，不会报错。参数3只能传一个字符串参数，不能传多个，如果需要传多个参数，只能分几个函数调用，或者字符串用特殊字符合并传递再拆分接收。但是参数3不能为null，否则会强制退出。</p>
-<p>2.处理 Unity 调用 Android 函数：<br>AndroidJavaClass jc = new AndroidJavaClass(“com.unity3d.player.UnityPlayer”);<br>AndroidJavaObject jo = jc.GetStatic<androidjavaobject>(“currentActivity”);<br>jo.Call(“Test”);//调用 jar 包的 currentActivity 里的 Test 方法</androidjavaobject></p>
-<p>以上就是 Unity 接入 Android SDK 的一个大致流程，实际接入的时候可能还会碰到一些奇奇怪怪的其他问题，这就需要和相应的 SDK 客服人员去沟通，接入 SDK 麻烦的地方就在于文档不清楚，沟通不便捷，调试不方便。只能说一句 Good Luck.</p>
+        <p>《人月神话》读书笔记（上）<br><a id="more"></a></p>
+<p>最近在读的一本书是《人月神话》，由于同事买了这本书，所以打算在同事还没有看这本书计划的时候，先借来看完。现在看到了一半，对于本书内容有了大致了解，感觉可以在以后觉得有需要重读此书的时候，再买来看，毕竟是“软工圣经”。</p>
+<hr>
+<p>闲话不多说，下面来写一下我目前看到前半部分的一点感触。</p>
+<p>《人月神话》这是一本适用于软件开发人员、软件项目经理及系统分析师等 IT 从业者的经典之作。这是一本始发行于1975年的书，里面记载了一篇作者关于20周年纪念版的序言，里面写道“令我惊奇和高兴的是，《人月神话》在20多年后仍然继续流行”。可能作者也没有想到，在40多年后的今天，这本书依然被我们视为经典，广为流传。能做到如此这般，实属不易。我也很惊讶于这本40多年前的书中观点至今读来仍然能给我醍醐灌顶之感。</p>
+<ul>
+<li><p>关于职业乐趣<br>对于我来说，当前职业的乐趣是我能亲眼看到自己工作所带来的成果，能看到自己开发的东西对他人是有用的。而且这个职业是需要持续学习的，在自己去钻研，学习一些新东西的时候，我能明显的感觉到自己的成长，很充实。而不是选择去做一条咸鱼。</p>
+</li>
+<li><p>关于职业苦恼<br>针对书中所提到的某些部分，还是有点感触。<br>“苦恼来自追求完美”。我对这条的感触是，总是感觉自己写的东西不好，在做某些东西的时候，经常会有一些疑惑，纠结。纠结于这样去写出的代码是不是不好，用另一种方式写会不会更好，纠结于某些处理方式，会不会有更优解。很多时候，自己没法做出判断，就选择了其中一种方式，但是就是觉得不完美。<br>“苦恼来自由他人设定目标、供给资源和提供信息”。我对这条的感触是，经常由于项目进度原因，某些功能本身预留时间就很紧迫，对于工期的报价不能单单针对功能去评估，这一点是我所左右不了的。</p>
+</li>
+</ul>
+<p>说起工期的估算，本书中讲到一些方面。</p>
+<p>缺乏合理的进度安排是造成项目滞后的最主要原因，它比其他所有因素加起来的影响还大，导致这种灾难如此普遍的原因主要有以下5点：</p>
+<p>1、对估算技术缺乏有效的研究，更严肃地说，它反映了一种悄无声息，但并不真实的假设——一切都将运作良好；</p>
+<p>2、我们采用的估算技术隐含地假设人和月可以互换，错误地将工作进度与工作量相互混淆；</p>
+<p>3、对于自己的估算缺乏信心，软件经理通常不会有耐心持续估算这项工作；</p>
+<p>4、对进度缺少跟踪和监督；</p>
+<p>5、当意识到进度的偏移时，下意识(以及传统)的反应是增加人力。</p>
+<h2 id="乐观主义"><a href="#乐观主义" class="headerlink" title="乐观主义"></a>乐观主义</h2><p>“计算机还很年轻，程序员更加年轻，而年轻人重视些乐观主义者——无论是什么样的程序，结果是毋庸置疑的：”这次它肯定会运行“，或者“我刚刚找出最后一个错误””。所以估算工期的背后，有一个错误的假设：一切都将运作良好，每一项任务仅花费它所“应该”花费的时间。<br>现实可能会像计划安排的那样顺利，但是大多数情况下，一切正常的概率非常小。</p>
+<h2 id="人月"><a href="#人月" class="headerlink" title="人月"></a>人月</h2><p>人月是在估算和进度安排中使用的工作量单位。书中说“用人月作为衡量一项工作的规模是一个危险和带有欺骗性的神话。它暗示着人员数量和时间是可以相互替换的。”</p>
+<p>书中说到几种观点：</p>
+<ol>
+<li><p>人数和时间的互换仅仅适用于某个任务可以分解给参与人员，并且他们之间不需要相互的交流，这在系统编程中几乎是不可能的。<br><img src="/rysh/1.png" alt="avatar">  </p>
+</li>
+<li><p>当任务由于次序上的限制不能分解时，人手的添加对进度没有帮助。<br><img src="/rysh/2.png" alt="avatar">  </p>
+</li>
+<li><p>对于可以分解，但子任务之间需要相互沟通和交流的任务，必须在计划工作中考虑沟通的工作量。因此，在相同人月的前提下，采用增加人手来减少时间得到的最好情况，还是比未调整前差一些。<br><img src="/rysh/3.png" alt="avatar">  </p>
+</li>
+<li><p>相互之间交流的情况更糟一些。如果任务的每个部分必须分别与其他部分单独协作，则工作量按照 n(n-1)/2 递增。所增加的用于沟通的工作量可能会完全抵消对原有任务分解所产生的作用。所以对于这种情况，添加更多的人手，实际上是延长了而不是缩短了时间进度。<br><img src="/rysh/4.png" alt="avatar">  </p>
+</li>
+</ol>
+<h2 id="重复产生的进度灾难"><a href="#重复产生的进度灾难" class="headerlink" title="重复产生的进度灾难"></a>重复产生的进度灾难</h2><p>当一个软件项目落后于进度时，通常的做法是加派人手。这可能有所帮助，却可能无法解决问题。<br>Brools 法则：向进度落后的项目中增加人手，只会使进度更加落后。<br>这就是除去了神话色彩的人月。项目的时间依赖于顺序上的限制，人员的最大数量依赖于独立子任务的数量。</p>
+<p>总之，缺乏合理的进度安排是造成项目之后的最主要原因，它比其他所有因素加起来的影响还要大。</p>
 
       
       
@@ -315,13 +340,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/24/《人月神话》读书笔记/">《人月神话》读书笔记（上）</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
-        <p><span>发布时间:</span>2018年06月18日 - 20时00分</p>
-        <p><span>最后更新:</span>2018年06月18日 - 21时00分</p>
+        <p><span>发布时间:</span>2018年06月24日 - 20时20分</p>
+        <p><span>最后更新:</span>2018年06月24日 - 22时54分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/18/UnityAndroidSDK/" title="Unity 接入 Android SDK">http://yoursite.com/2018/06/18/UnityAndroidSDK/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/18/UnityAndroidSDK/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/24/《人月神话》读书笔记/" title="《人月神话》读书笔记（上）">http://yoursite.com/2018/06/24/《人月神话》读书笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/24/《人月神话》读书笔记/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -334,18 +359,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/06/24/《人月神话》读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          《人月神话》读书笔记（上）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/10/UnityKnowledgePoint1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</div>
+    <a href="/2018/06/18/UnityAndroidSDK/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity 接入 Android SDK</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +372,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-Unity-与-Android-交互："><span class="toc-number">1.</span> <span class="toc-text">关于 Unity 与 Android 交互：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#乐观主义"><span class="toc-number">1.</span> <span class="toc-text">乐观主义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人月"><span class="toc-number">2.</span> <span class="toc-text">人月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复产生的进度灾难"><span class="toc-number">3.</span> <span class="toc-text">重复产生的进度灾难</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -422,13 +438,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/24/《人月神话》读书笔记/" title="上一篇: 《人月神话》读书笔记（上）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/06/10/UnityKnowledgePoint1/" title="下一篇: Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
+            <a href="/2018/06/18/UnityAndroidSDK/" title="下一篇: Unity 接入 Android SDK">
                 <i class="fa fa-angle-right"></i>
             </a>
         
