@@ -13,12 +13,12 @@
 <meta property="og:description" content="自己制作的第一款小游戏">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/FlappyBird/FlappyBird1.png">
-<meta property="og:image" content="http://yoursite.com/imgFlappyBird/FlappyBird2.png">
-<meta property="og:image" content="http://yoursite.com/imgFlappyBird/FlappyBird3.png">
-<meta property="og:image" content="http://yoursite.com/imgFlappyBird/FlappyBird4.png">
-<meta property="og:image" content="http://yoursite.com/imgFlappyBird/FlappyBird5.png">
-<meta property="og:image" content="http://yoursite.com/imgFlappyBird/FlappyBird6.png">
-<meta property="og:updated_time" content="2018-07-01T15:25:42.340Z">
+<meta property="og:image" content="http://yoursite.com/img/FlappyBird/FlappyBird2.png">
+<meta property="og:image" content="http://yoursite.com/img/FlappyBird/FlappyBird3.png">
+<meta property="og:image" content="http://yoursite.com/img/FlappyBird/FlappyBird4.png">
+<meta property="og:image" content="http://yoursite.com/img/FlappyBird/FlappyBird5.png">
+<meta property="og:image" content="http://yoursite.com/img/FlappyBird/FlappyBird6.png">
+<meta property="og:updated_time" content="2018-07-01T15:31:07.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自制小游戏 —— Flappy Bird">
 <meta name="twitter:description" content="自己制作的第一款小游戏">
@@ -259,12 +259,12 @@
 <h2 id="游戏介绍："><a href="#游戏介绍：" class="headerlink" title="游戏介绍："></a>游戏介绍：</h2><p>《flappy bird》是一款由来自越南的独立游戏开发者Dong Nguyen所开发的作品，游戏于2013年5月24日上线，并在2014年2月突然暴红。2014年2月，《Flappy Bird》被开发者本人从苹果及谷歌应用商店撤下。2014年8月份正式回归APP STORE，正式加入Flappy迷们期待已久的多人对战模式。游戏中玩家必须控制一只小鸟，跨越由各种不同长度水管所组成的障碍。</p>
 <h1 id="项目工程"><a href="#项目工程" class="headerlink" title="项目工程"></a>项目工程</h1><p>项目已经发布到 github Releases，<a href="https://github.com/zhySmile/FlappyBird/releases" target="_blank" rel="external">项目地址</a></p>
 <p>部分游戏截图：<br><img src="/img/FlappyBird/FlappyBird1.png" alt="">  </p>
-<p><img src="/imgFlappyBird/FlappyBird2.png" alt="">  </p>
-<p><img src="/imgFlappyBird/FlappyBird3.png" alt="">  </p>
-<p><img src="/imgFlappyBird/FlappyBird4.png" alt="">  </p>
-<p><img src="/imgFlappyBird/FlappyBird5.png" alt="">  </p>
+<p><img src="/img/FlappyBird/FlappyBird2.png" alt="">  </p>
+<p><img src="/img/FlappyBird/FlappyBird3.png" alt="">  </p>
+<p><img src="/img/FlappyBird/FlappyBird4.png" alt="">  </p>
+<p><img src="/img/FlappyBird/FlappyBird5.png" alt="">  </p>
 <h1 id="制作流程"><a href="#制作流程" class="headerlink" title="制作流程"></a>制作流程</h1><p>大体思路：</p>
-<p><img src="/imgFlappyBird/FlappyBird6.png" alt="">  </p>
+<p><img src="/img/FlappyBird/FlappyBird6.png" alt="">  </p>
 <h1 id="遇到的难点"><a href="#遇到的难点" class="headerlink" title="遇到的难点"></a>遇到的难点</h1><p>我在制作这款游戏的过程中还是遇到了一些问题。</p>
 <ol>
 <li><p>对于游戏主角小鸟的控制。上升与下降的处理。<br>1.1 刚一开始做的时候，首先的想法是在手指点击之后，给小鸟一个向上的力，通过使用刚体，小鸟根据本身刚体重力的作用去实现下落。这么去做了之后，发现小鸟很不受控制，本身我对于刚体不是很了解，遂弃之。<br>1.2 第二次尝试，通过插值函数，去设置小鸟的位置。这次的表现比第一次的尝试好一些，但是对比原版，发现原版的小鸟上升时是先快后慢，下降的时候是先慢后快。我理解的插值函数有两种表现：①固定差值步进比例与目标点，变化初始点。这样的结果就是先快后慢变化。②固定初始点与目标点，插值步进比例规律变化。这样的结果是匀速变化。两种插值方式都不满足小鸟先慢后快的下降方式，遂弃之。<br>1.3 接着尝试了模拟重力加速度的方式，规律变化加速度。给定一个初始值，上升的时候，加速度逐渐变慢，满足小鸟先快后慢的上升方式。等到加速度降到0之后，变为负的，即小鸟开始向下落，加速度逐渐变大，满足小鸟先慢后快的下降方式。最后采用此种方法实现小鸟的运动状态。</p>
@@ -331,7 +331,7 @@
         <p><span>本文标题:</span><a href="/2018/07/01/FlappyBird/">自制小游戏 —— Flappy Bird</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2018年07月01日 - 23时27分</p>
-        <p><span>最后更新:</span>2018年07月01日 - 23时25分</p>
+        <p><span>最后更新:</span>2018年07月01日 - 23时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/01/FlappyBird/" title="自制小游戏 —— Flappy Bird">http://yoursite.com/2018/07/01/FlappyBird/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/01/FlappyBird/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
