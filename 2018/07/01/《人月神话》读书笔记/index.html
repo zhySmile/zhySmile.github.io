@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>《调试九法》读书笔记 | zhySmile</title>
+  <title>《人月神话》读书笔记（上） | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="《调试九法》读书笔记">
-<meta name="keywords" content="Debugging">
+  <meta name="description" content="《人月神话》读书笔记（上）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《调试九法》读书笔记">
-<meta property="og:url" content="http://yoursite.com/2018/05/27/《调试九法》读书笔记/index.html">
+<meta property="og:title" content="《人月神话》读书笔记（上）">
+<meta property="og:url" content="http://yoursite.com/2018/07/01/《人月神话》读书笔记/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="《调试九法》读书笔记">
+<meta property="og:description" content="《人月神话》读书笔记（上）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-27T14:57:04.865Z">
+<meta property="og:updated_time" content="2018-06-24T16:25:51.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《调试九法》读书笔记">
-<meta name="twitter:description" content="《调试九法》读书笔记">
+<meta name="twitter:title" content="《人月神话》读书笔记（上）">
+<meta name="twitter:description" content="《人月神话》读书笔记（上）">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -210,11 +209,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-《调试九法》读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《人月神话》读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/05/27/《调试九法》读书笔记/" class="article-date">
-      <time datetime="2018-05-27T14:43:04.128Z" itemprop="datePublished">2018-05-27</time>
+      <a href="/2018/07/01/《人月神话》读书笔记/" class="article-date">
+      <time datetime="2018-07-01T13:42:36.683Z" itemprop="datePublished">2018-07-01</time>
 </a>
     </div>
   
@@ -227,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《调试九法》读书笔记
+      《人月神话》读书笔记（上）
     </h1>
   
 
@@ -241,10 +240,6 @@
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debugging/">Debugging</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -252,40 +247,41 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>《调试九法》读书笔记<br><a id="more"></a><br>最近一周在读的一本书是《调试九法》，看完此书之后，感觉这就是一本调试界的葵花宝典，虽然作者并不是互联网行业的一员，书众所列举的例子我也不会遇到，但是这套调试方法看下来之后，却有很多共鸣之处，就像书中说的“本书适用于任何人”。</p>
-<p>对于这些调试规则，以下我将他们结合到我的行业中，结合自己的思考，整理一下，便于加深理解和以后的二次阅读。</p>
-<h2 id="调试规则："><a href="#调试规则：" class="headerlink" title="调试规则："></a>调试规则：</h2><p>一：理解系统</p>
-<p>二：制造失败</p>
-<p>三：不要想，而要看</p>
-<p>四：分而治之</p>
-<p>五：一次只改一个地方</p>
-<p>六：保持审计跟踪</p>
-<p>七：检查插头</p>
-<p>八：获得全新观点</p>
-<p>九：如果你不修复 bug，它将依然存在</p>
-<h3 id="一：理解系统"><a href="#一：理解系统" class="headerlink" title="一：理解系统"></a>一：理解系统</h3><p>我认为调试方法中首要的一个规则就是”理解系统“，没有理解原理之前，很多问题都没有办法去调试。除非是那种显而易见的。</p>
-<p>对于平时的 bug 而言，一般情况下分配给自己处理的都是自己所写的逻辑模块的 bug，因此对于那部分的系统来说，是最清楚不过的（当然，假如那个系统是你 N 年前写的东西，估计还需要你再去梳理一下），但是某些情况下也是不尽然的。在这种你需要去修复别人写的东西的 bug的时候，此规则就是你必须去做的了，永远不要犹豫要不要去做这件事，做就是了。</p>
-<h3 id="二：制造失败"><a href="#二：制造失败" class="headerlink" title="二：制造失败"></a>二：制造失败</h3><p>在 QA 同学提出 bug 之后，我们首先要去“制造失败”。这是我每次接到 bug 之后，肯定会做的一个步骤，尝试去复现 bug，假如这个 bug 每次必现，我会很开心。最起码不需要再去反复和 QA 同学确定细节，要知道，反复确定细节的结果有可能是无用功，并不会提供多大的帮助。</p>
-<p>对于一些比较难“制造失败”的 bug，就需要考虑是不是应该去做点什么，让这个 bug 复现的更方便。</p>
-<p>说到这就让我想起了之前遇到的一个 bug，那个 bug 不是规律性复现，我每次尝试“制造失败”的时候，都要一遍一遍的重复操作，企图以最快的速度去复现这个 bug，虽然这个方式也是能复现的，但是那个下班之后回到家的夜晚，我的肩膀异常的疼痛，我把这个锅都扔给了这个 bug，却没有意识到是我“制造失败”的过程太艰辛。还是多亏了同事的提醒，我写了一个自动测试工具，代替了我的人工点击，几分钟的工作，直接的结果就是“制造失败”效率提高了，节省了时间，让我能专心在观察 bug 上，并且胳膊也解脱了。</p>
-<p>所以在复现问题的过程中假如太麻烦的话，请考虑花几分钟去写个测试工具，你肯定会感谢你自己做的这个决定。</p>
-<p>关于书中所说到的“不要模拟失败”，在看的过程中还是有一些疑惑的。引发失败（正确）和模拟失败（错误）这二者之间存在着非常大的差别。对于那种为了排除干扰因素，建立一个小工程去把不相关部分去掉，只单单观察核心的方式，其实并不是“模拟失败”。“模拟失败”的意思是模拟失败机理本身。</p>
-<h3 id="三：不要想，而要看"><a href="#三：不要想，而要看" class="headerlink" title="三：不要想，而要看"></a>三：不要想，而要看</h3><p>在遇到 bug 之后的一大忌就是直接去怀疑是哪里出的问题，“不要想，而要看”，去确确实实的看到问题是怎么产生的，猜疑是最不可靠的。假如从一开始你就认为这个 bug 一定是某个部分出了问题，那你从一开始就被蒙蔽了双眼，你会戴着有色眼镜去看这个问题，会产生误导，引入歧途。</p>
-<p>需要去看到失败是怎么发生的，在哪里发生的，然后去调试，看到是哪里出了问题，顺藤摸瓜，找到问题的源头，从而解决问题。</p>
-<p>当然，”不要想，而要看“并不意味着不能做任何猜想。当理解了系统之后，猜测可能很接近事实，但猜测只是为了确定搜索的重点。在尝试修复问题之前，仍需要再次看到失败，以便确认猜测的是正确的。</p>
-<h3 id="四：分而治之"><a href="#四：分而治之" class="headerlink" title="四：分而治之"></a>四：分而治之</h3><p>这个规则也是调试过程中一个重要的规则。首先要缩小搜索范围，确定出错的大概范围。书中说了一个小游戏，让你的朋友从1-100之间选一个数字，由你来猜，每次你的朋友告诉你是猜高了，还是猜低了，最多只需7次你就会猜到答案。采用二分法的思路，每次猜区域中间的数字。我和我的朋友玩了这个游戏，恰巧的是，我真的花了整整七次，猜到了他的答案（他的答案是66）。任何有效的目标搜索都会使用一种共同的技术，那就是”逐次逼近“。</p>
-<p>还有就是当你去查找这个 bug 的过程中，假如发现了别的 bug ，需要先去修复那个已知 bug，有可能正是这个已知 bug 导致了那个 bug，我在工作的过程中也经常会遇到这样的情况，很多时候，修复了已知的 bug，原 bug 也就迎刃而解了。</p>
-<h3 id="五：一次只改一个地方"><a href="#五：一次只改一个地方" class="headerlink" title="五：一次只改一个地方"></a>五：一次只改一个地方</h3><p>修复 bug 的时候，一次只改一个地方，在你尝试修复这个 bug 的过程中做的任何尝试性改动都要记得及时恢复。不要看到哪里觉得写的不太好，就尝试着去做改动，有可能你的这个改动对修复 bug 来说没有一点帮助，相反，有可能还会引入新的问题，造成覆盖掉了原 bug。</p>
-<p>要保证一次只改一个地方，版本管理就显出价值了。你可能需要和正常系统进行比较，可能这个 bug 是之前没有发生过的，那就需要回到正确的版本，去对比查看这期间做了什么改动。这对于无思路的情况下是一个很有帮助的方法。能直观的看到自从上一次能够正常工作依赖更改了什么导致这个 bug 的产生。</p>
-<h3 id="六：保持审计跟踪"><a href="#六：保持审计跟踪" class="headerlink" title="六：保持审计跟踪"></a>六：保持审计跟踪</h3><p>这个规则可能需要在 QA 同学的协助下进行，需要记下每步操作、顺序和结果。还要注意记下细节，找出关联。</p>
-<p>但是这个规则在 QA 同学不能给出足够多细节的时候还是要靠自己，去”制造失败“，发现问题。并且不要过分的对自己的记忆自信，现实往往是打了自己的脸。好记性不如烂笔头，记下来，不仅是对后人的负责，也是对自己的负责。</p>
-<h3 id="七：检查插头"><a href="#七：检查插头" class="headerlink" title="七：检查插头"></a>七：检查插头</h3><p>这个规则是针对一些最单纯的问题，但是我们往往会直接忽略掉，自动默认是正确的情况下。例如机器不能工作，没准就是你的机器插头松掉了而造成。对于这种情况，假如我们做了一大番研究之后，最后才查出是这种原因的时候，估计我们心中只会苦笑。</p>
-<p>所以，要从头开始检查。查看各方面条件是否都正确，不错过任何一个细节，不要想当然。</p>
-<h3 id="八：获得全新观点"><a href="#八：获得全新观点" class="headerlink" title="八：获得全新观点"></a>八：获得全新观点</h3><p>当你对一个 bug 没有头绪的时候，你可能需要一个比你更加了解，更加有经验的人，来向他寻求一下帮助，获得一个你自己想不到的全新观点，借鉴别人的经验，能让你少走弯路，豁然开朗。</p>
-<p>应用这个规则的时候，需要注意的一点是，在向别人寻求帮助的时候，只报告症状，而不要阐述你自己的理论。之所以要从别人那里获得全新的观点，就是因为你的理论起不到任何作用。假如你把你的理论告诉他，那么也会把他拉到你原来的思维定势中，同时，你很有可能会把一些需要让他知道的关键细节隐藏起来，因为你自己有偏见，认为这些细节不重要。但是你这么做的结果就是，你可能并不能获得全新观点，失去了一个解决 bug 的机会。</p>
-<h3 id="九：如果你不修复-bug，它将依然存在"><a href="#九：如果你不修复-bug，它将依然存在" class="headerlink" title="九：如果你不修复 bug，它将依然存在"></a>九：如果你不修复 bug，它将依然存在</h3><p>是的，永远不要抱着侥幸心理，bug 依然在，你依然没有解掉。</p>
-<p>在你认为修复了 bug 之后，一定要去验证一下，检查问题确实已被修复。而且需要去验证检查确实是修复措施解决了问题。这时你要做的就是撤销掉改动，再去”制造失败“，加上改动，看有没有解决问题。</p>
-<p>修复 bug 一定要保证从根本上解决问题，不要试图以一种临时方案去尝试修复，这种修复可能只是使 bug 出现的概率减小了，但是它还是会再发生的，不要欺骗自己，bug 从来不会自己消失。</p>
+        <p>《人月神话》读书笔记（上）<br><a id="more"></a></p>
+<p>最近在读的一本书是《人月神话》，由于同事买了这本书，所以打算在同事还没有看这本书计划的时候，先借来看完。现在看到了一半，对于本书内容有了大致了解，感觉可以在以后觉得有需要重读此书的时候，再买来看，毕竟是“软工圣经”。</p>
+<hr>
+<p>闲话不多说，下面来写一下我目前看到前半部分的一点感触。</p>
+<p>《人月神话》这是一本适用于软件开发人员、软件项目经理及系统分析师等 IT 从业者的经典之作。这是一本始发行于1975年的书，里面记载了一篇作者关于20周年纪念版的序言，里面写道“令我惊奇和高兴的是，《人月神话》在20多年后仍然继续流行”。可能作者也没有想到，在40多年后的今天，这本书依然被我们视为经典，广为流传。能做到如此这般，实属不易。我也很惊讶于这本40多年前的书中观点至今读来仍然能给我醍醐灌顶之感。</p>
+<ol>
+<li><p>关于职业乐趣<br>对于我来说，当前职业的乐趣是我能亲眼看到自己工作所带来的成果，能看到自己开发的东西对他人是有用的。而且这个职业是需要持续学习的，在自己去钻研，学习一些新东西的时候，我能明显的感觉到自己的成长，很充实。而不是选择去做一条咸鱼。</p>
+</li>
+<li><p>关于职业苦恼<br>针对书中所提到的某些部分，还是有点感触。<br>“苦恼来自追求完美”。我对这条的感触是，总是感觉自己写的东西不好，在做某些东西的时候，经常会有一些疑惑，纠结。纠结于这样去写出的代码是不是不好，用另一种方式写会不会更好，纠结于某些处理方式，会不会有更优解。很多时候，自己没法做出判断，就选择了其中一种方式，但是就是觉得不完美。<br>“苦恼来自由他人设定目标、供给资源和提供信息”。我对这条的感触是，经常由于项目进度原因，某些功能本身预留时间就很紧迫，对于工期的报价不能单单针对功能去评估，这一点是我所左右不了的。</p>
+</li>
+</ol>
+<p>说起工期的估算，本书中讲到一些方面。</p>
+<p>缺乏合理的进度安排是造成项目滞后的最主要原因，它比其他所有因素加起来的影响还大，导致这种灾难如此普遍的原因主要有以下5点：</p>
+<p>1、对估算技术缺乏有效的研究，更严肃地说，它反映了一种悄无声息，但并不真实的假设——一切都将运作良好；</p>
+<p>2、我们采用的估算技术隐含地假设人和月可以互换，错误地将工作进度与工作量相互混淆；</p>
+<p>3、对于自己的估算缺乏信心，软件经理通常不会有耐心持续估算这项工作；</p>
+<p>4、对进度缺少跟踪和监督；</p>
+<p>5、当意识到进度的偏移时，下意识(以及传统)的反应是增加人力。</p>
+<h2 id="乐观主义"><a href="#乐观主义" class="headerlink" title="乐观主义"></a>乐观主义</h2><p>“计算机还很年轻，程序员更加年轻，而年轻人重视些乐观主义者——无论是什么样的程序，结果是毋庸置疑的：”这次它肯定会运行“，或者“我刚刚找出最后一个错误””。所以估算工期的背后，有一个错误的假设：一切都将运作良好，每一项任务仅花费它所“应该”花费的时间。<br>现实可能会像计划安排的那样顺利，但是大多数情况下，一切正常的概率非常小。</p>
+<h2 id="人月"><a href="#人月" class="headerlink" title="人月"></a>人月</h2><p>人月是在估算和进度安排中使用的工作量单位。书中说“用人月作为衡量一项工作的规模是一个危险和带有欺骗性的神话。它暗示着人员数量和时间是可以相互替换的。”</p>
+<p>书中说到几种观点：</p>
+<ol>
+<li>人数和时间的互换仅仅适用于某个任务可以分解给参与人员，并且他们之间不需要相互的交流，这在系统编程中几乎是不可能的。</li>
+</ol>
+<ol>
+<li>当任务由于次序上的限制不能分解时，人手的添加对进度没有帮助。</li>
+</ol>
+<ol>
+<li>对于可以分解，但子任务之间需要相互沟通和交流的任务，必须在计划工作中考虑沟通的工作量。因此，在相同人月的前提下，采用增加人手来减少时间得到的最好情况，还是比未调整前差一些。</li>
+</ol>
+<ol>
+<li>相互之间交流的情况更糟一些。如果任务的每个部分必须分别与其他部分单独协作，则工作量按照 n(n-1)/2 递增。所增加的用于沟通的工作量可能会完全抵消对原有任务分解所产生的作用。所以对于这种情况，添加更多的人手，实际上是延长了而不是缩短了时间进度。</li>
+</ol>
+<h2 id="重复产生的进度灾难"><a href="#重复产生的进度灾难" class="headerlink" title="重复产生的进度灾难"></a>重复产生的进度灾难</h2><p>当一个软件项目落后于进度时，通常的做法是加派人手。这可能有所帮助，却可能无法解决问题。<br>Brools 法则：向进度落后的项目中增加人手，只会使进度更加落后。<br>这就是除去了神话色彩的人月。项目的时间依赖于顺序上的限制，人员的最大数量依赖于独立子任务的数量。</p>
+<p>总之，缺乏合理的进度安排是造成项目之后的最主要原因，它比其他所有因素加起来的影响还要大。</p>
 
       
       
@@ -341,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/05/27/《调试九法》读书笔记/">《调试九法》读书笔记</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/01/《人月神话》读书笔记/">《人月神话》读书笔记（上）</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
-        <p><span>发布时间:</span>2018年05月27日 - 22时43分</p>
-        <p><span>最后更新:</span>2018年05月27日 - 22时57分</p>
+        <p><span>发布时间:</span>2018年07月01日 - 21时42分</p>
+        <p><span>最后更新:</span>2018年06月25日 - 00时25分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/05/27/《调试九法》读书笔记/" title="《调试九法》读书笔记">http://yoursite.com/2018/05/27/《调试九法》读书笔记/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/27/《调试九法》读书笔记/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/01/《人月神话》读书笔记/" title="《人月神话》读书笔记（上）">http://yoursite.com/2018/07/01/《人月神话》读书笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/01/《人月神话》读书笔记/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -360,18 +356,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/06/05/Git/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Git 常用命令总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/13/AssetBundleManual1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">U3D AssetBundle 官方文档（翻译版）学习笔记</div>
+    <a href="/2018/06/18/UnityAndroidSDK/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity 接入 Android SDK</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -382,7 +369,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调试规则："><span class="toc-number">1.</span> <span class="toc-text">调试规则：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：理解系统"><span class="toc-number">1.1.</span> <span class="toc-text">一：理解系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：制造失败"><span class="toc-number">1.2.</span> <span class="toc-text">二：制造失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三：不要想，而要看"><span class="toc-number">1.3.</span> <span class="toc-text">三：不要想，而要看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四：分而治之"><span class="toc-number">1.4.</span> <span class="toc-text">四：分而治之</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五：一次只改一个地方"><span class="toc-number">1.5.</span> <span class="toc-text">五：一次只改一个地方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六：保持审计跟踪"><span class="toc-number">1.6.</span> <span class="toc-text">六：保持审计跟踪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七：检查插头"><span class="toc-number">1.7.</span> <span class="toc-text">七：检查插头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八：获得全新观点"><span class="toc-number">1.8.</span> <span class="toc-text">八：获得全新观点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九：如果你不修复-bug，它将依然存在"><span class="toc-number">1.9.</span> <span class="toc-text">九：如果你不修复 bug，它将依然存在</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#乐观主义"><span class="toc-number">1.</span> <span class="toc-text">乐观主义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人月"><span class="toc-number">2.</span> <span class="toc-text">人月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复产生的进度灾难"><span class="toc-number">3.</span> <span class="toc-text">重复产生的进度灾难</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -448,13 +435,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/05/Git/" title="上一篇: Git 常用命令总结">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/05/13/AssetBundleManual1/" title="下一篇: U3D AssetBundle 官方文档（翻译版）学习笔记">
+            <a href="/2018/06/18/UnityAndroidSDK/" title="下一篇: Unity 接入 Android SDK">
                 <i class="fa fa-angle-right"></i>
             </a>
         
