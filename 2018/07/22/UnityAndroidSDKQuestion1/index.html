@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Unity 接入 Android SDK | zhySmile</title>
+  <title>Unity 接入 Android SDK，切换黑屏问题 | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Unity 接入 Android SDK">
+  <meta name="description" content="Unity 接入 Android SDK，切换黑屏问题">
 <meta name="keywords" content="Unity、Android、SDK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity 接入 Android SDK">
-<meta property="og:url" content="http://yoursite.com/2018/06/18/UnityAndroidSDK/index.html">
+<meta property="og:title" content="Unity 接入 Android SDK，切换黑屏问题">
+<meta property="og:url" content="http://yoursite.com/2018/07/22/UnityAndroidSDKQuestion1/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="Unity 接入 Android SDK">
+<meta property="og:description" content="Unity 接入 Android SDK，切换黑屏问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-18T13:00:21.693Z">
+<meta property="og:image" content="http://yoursite.com/img/UnityAndroidSDKQuestion1/AndroidActivity.png">
+<meta property="og:updated_time" content="2018-07-22T13:14:36.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity 接入 Android SDK">
-<meta name="twitter:description" content="Unity 接入 Android SDK">
+<meta name="twitter:title" content="Unity 接入 Android SDK，切换黑屏问题">
+<meta name="twitter:description" content="Unity 接入 Android SDK，切换黑屏问题">
+<meta name="twitter:image" content="http://yoursite.com/img/UnityAndroidSDKQuestion1/AndroidActivity.png">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -210,11 +212,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-UnityAndroidSDK" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-UnityAndroidSDKQuestion1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/18/UnityAndroidSDK/" class="article-date">
-      <time datetime="2018-06-18T12:00:10.900Z" itemprop="datePublished">2018-06-18</time>
+      <a href="/2018/07/22/UnityAndroidSDKQuestion1/" class="article-date">
+      <time datetime="2018-07-22T12:56:10.579Z" itemprop="datePublished">2018-07-22</time>
 </a>
     </div>
   
@@ -227,7 +229,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unity 接入 Android SDK
+      Unity 接入 Android SDK，切换黑屏问题
     </h1>
   
 
@@ -252,14 +254,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Unity 接入 Android SDK<br><a id="more"></a><br>SDK：软件开发工具包（Software Development Kit），软件开发工具包广义上指辅助开发某一类软件的相关文档、范例和工具的集合</p>
-<p>需要的开发环境：Unity、安卓开发工具（Eclipse 或 Android Studio）<br>一、首先阅读文档，有些文档说的不清楚，所以要多读，注意要反复阅读，不要遗漏任何细节<br>二、将示例 demo 看一遍，查看其调用方式，回调等等<br>三、接下来步入正轨，开始着手接入</p>
-<p>Tips：为了调试的方便，可以先用一个测试小项目接入 SDK，节省调试成本和其余部分的影响，单纯的去测试 SDK 接入，待测试项目通过，再去接入项目内。</p>
-<p>接入的SDK 一般分为两种：一种是封装好的适用于 Unity 的。这种就很简单了，只需要去看一下有哪些接口，直接去调用相应的接口就可以了。 但是更多的是另一种，纯 Android 的，这就需要我们去写一些 Android 部分，主要处理 Unity 与 Android 通信的内容。</p>
-<p>对于接入纯 Android 的 SDK，我接过的流程如下：<br>1.创建 Android 工程，写 java 脚本，处理 Unity 与 Android 通信。<br>2.将 java 脚本打成 jar 包，放入 Unity 工程。<br>3.Unity 工程里去调用对应方法。</p>
-<h3 id="关于-Unity-与-Android-交互："><a href="#关于-Unity-与-Android-交互：" class="headerlink" title="关于 Unity 与 Android 交互："></a>关于 Unity 与 Android 交互：</h3><p>1.处理 Unity 接收 Android 回调：<br>UnityPlayer.UnitySendMessage(_unityCallBackObjectName, “LoginCancelCallBack”, “”);<br>参数1:GameObject名称，参数2：函数名，参数3:字符串参数。<br>注意：物体上不存在名称为参数2的函数，不会报错。参数3只能传一个字符串参数，不能传多个，如果需要传多个参数，只能分几个函数调用，或者字符串用特殊字符合并传递再拆分接收。但是参数3不能为null，否则会强制退出。</p>
-<p>2.处理 Unity 调用 Android 函数：<br>AndroidJavaClass jc = new AndroidJavaClass(“com.unity3d.player.UnityPlayer”);<br>AndroidJavaObject jo = jc.GetStatic<androidjavaobject>(“currentActivity”);<br>jo.Call(“Test”);//调用 jar 包的 currentActivity 里的 Test 方法</androidjavaobject></p>
-<p>以上就是 Unity 接入 Android SDK 的一个大致流程，实际接入的时候可能还会碰到一些奇奇怪怪的其他问题，这就需要和相应的 SDK 客服人员去沟通，接入 SDK 麻烦的地方就在于文档不清楚，沟通不便捷，调试不方便。只能说一句 Good Luck.</p>
+        <p>Unity 接入 Android SDK，切换黑屏问题<br><a id="more"></a><br>问题描述：在 Unity 接入Android SDK 以后，打开 SDK 界面（例如登陆或支付），切换到后台，回来之后游戏背景黑屏问题（SDK 的界面还在，游戏内背景黑了）。</p>
+<p>原因：有些 SDK 的界面是采用启动一个新的 activity 的方式。所以导致我们在调用 SDK 的时候，游戏本身会调用生命周期的 pause 。这时候按下设备的 home 键，切换到后台，SDK 应该也会调用 pause 。然后重新返回游戏，这时候只有 SDK 会调用 resume，但我们游戏自己的程序并没有调用 resume。</p>
+<p>解决方法：在 onPause 和 onStart 里分别判断当前 mainactivity 是否是 SDK 的 activity，假如是，就手动调用游戏 activity 的 onResume。</p>
+<p>另附上 Android Activity 生命周期图；<br><img src="/img/UnityAndroidSDKQuestion1/AndroidActivity.png" alt="">  </p>
 
       
       
@@ -315,13 +313,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/22/UnityAndroidSDKQuestion1/">Unity 接入 Android SDK，切换黑屏问题</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
-        <p><span>发布时间:</span>2018年06月18日 - 20时00分</p>
-        <p><span>最后更新:</span>2018年06月18日 - 21时00分</p>
+        <p><span>发布时间:</span>2018年07月22日 - 20时56分</p>
+        <p><span>最后更新:</span>2018年07月22日 - 21时14分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/18/UnityAndroidSDK/" title="Unity 接入 Android SDK">http://yoursite.com/2018/06/18/UnityAndroidSDK/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/18/UnityAndroidSDK/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/22/UnityAndroidSDKQuestion1/" title="Unity 接入 Android SDK，切换黑屏问题">http://yoursite.com/2018/07/22/UnityAndroidSDKQuestion1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/22/UnityAndroidSDKQuestion1/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -334,18 +332,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/07/01/《人月神话》读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          《人月神话》读书笔记（上）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/10/UnityKnowledgePoint1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</div>
+    <a href="/2018/07/22/Fleet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +345,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-Unity-与-Android-交互："><span class="toc-number">1.</span> <span class="toc-text">关于 Unity 与 Android 交互：</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -422,13 +411,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/01/《人月神话》读书笔记/" title="上一篇: 《人月神话》读书笔记（上）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/06/10/UnityKnowledgePoint1/" title="下一篇: Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别">
+            <a href="/2018/07/22/Fleet/" title="下一篇: ">
                 <i class="fa fa-angle-right"></i>
             </a>
         
