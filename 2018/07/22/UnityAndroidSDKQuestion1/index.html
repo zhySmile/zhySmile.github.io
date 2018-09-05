@@ -14,7 +14,7 @@
 <meta property="og:description" content="Unity 接入 Android SDK，切换黑屏问题">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/UnityAndroidSDKQuestion1/AndroidActivity.png">
-<meta property="og:updated_time" content="2018-07-22T13:14:36.717Z">
+<meta property="og:updated_time" content="2018-07-22T13:29:57.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity 接入 Android SDK，切换黑屏问题">
 <meta name="twitter:description" content="Unity 接入 Android SDK，切换黑屏问题">
@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/AssetBundle/" style="font-size: 10px;">AssetBundle</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/Unity、API/" style="font-size: 10px;">Unity、API</a> <a href="/tags/Unity、Android、SDK/" style="font-size: 20px;">Unity、Android、SDK</a> <a href="/tags/version-management/" style="font-size: 10px;">version management</a>
+                        <a href="/tags/AssetBundle/" style="font-size: 10px;">AssetBundle</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/Unity、API/" style="font-size: 10px;">Unity、API</a> <a href="/tags/Unity、Android、SDK/" style="font-size: 20px;">Unity、Android、SDK</a> <a href="/tags/Unity、UI/" style="font-size: 10px;">Unity、UI</a> <a href="/tags/version-management/" style="font-size: 10px;">version management</a>
                     </div>
                 </section>
                 
@@ -254,9 +254,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Unity 接入 Android SDK，切换黑屏问题<br><a id="more"></a><br>问题描述：在 Unity 接入Android SDK 以后，打开 SDK 界面（例如登陆或支付），切换到后台，回来之后游戏背景黑屏问题（SDK 的界面还在，游戏内背景黑了）。</p>
-<p>原因：有些 SDK 的界面是采用启动一个新的 activity 的方式。所以导致我们在调用 SDK 的时候，游戏本身会调用生命周期的 pause 。这时候按下设备的 home 键，切换到后台，SDK 应该也会调用 pause 。然后重新返回游戏，这时候只有 SDK 会调用 resume，但我们游戏自己的程序并没有调用 resume。</p>
-<p>解决方法：在 onPause 和 onStart 里分别判断当前 mainactivity 是否是 SDK 的 activity，假如是，就手动调用游戏 activity 的 onResume。</p>
+        <p>Unity 接入 Android SDK，切换黑屏问题<br><a id="more"></a><br><strong><em><label style="color:red">问题描述</label></em></strong>：在 Unity 接入Android SDK 以后，打开 SDK 界面（例如登陆或支付），切换到后台，回来之后游戏背景黑屏问题（SDK 的界面还在，游戏内背景黑了）。</p>
+<p><strong><em><label style="color:blue">原因</label></em></strong>：有些 SDK 的界面是采用启动一个新的 activity 的方式。所以导致我们在调用 SDK 的时候，游戏本身会调用生命周期的 pause 。这时候按下设备的 home 键，切换到后台，SDK 应该也会调用 pause 。然后重新返回游戏，这时候只有 SDK 会调用 resume，但我们游戏自己的程序并没有调用 resume。</p>
+<p><strong><em><label style="color:green">解决方法</label></em></strong>：在 onPause 和 onStart 里分别判断当前 mainactivity 是否是 SDK 的 activity，假如是，就手动调用游戏 activity 的 onResume。</p>
 <p>另附上 Android Activity 生命周期图；<br><img src="/img/UnityAndroidSDKQuestion1/AndroidActivity.png" alt="">  </p>
 
       
@@ -316,7 +316,7 @@
         <p><span>本文标题:</span><a href="/2018/07/22/UnityAndroidSDKQuestion1/">Unity 接入 Android SDK，切换黑屏问题</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2018年07月22日 - 20时56分</p>
-        <p><span>最后更新:</span>2018年07月22日 - 21时14分</p>
+        <p><span>最后更新:</span>2018年07月22日 - 21时29分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/22/UnityAndroidSDKQuestion1/" title="Unity 接入 Android SDK，切换黑屏问题">http://yoursite.com/2018/07/22/UnityAndroidSDKQuestion1/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/22/UnityAndroidSDKQuestion1/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -332,9 +332,18 @@
 
 <nav id="article-nav">
   
+    <a href="/2018/09/05/UnityUIDropDown/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Unity UGUI - Dropdown
+        
+      </div>
+    </a>
   
-    <a href="/2018/07/22/Fleet/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+  
+    <a href="/2018/07/15/HexoBlog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo 博客同步</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -411,16 +420,18 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/09/05/UnityUIDropDown/" title="上一篇: Unity UGUI - Dropdown">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/07/22/Fleet/" title="下一篇: ">
+            <a href="/2018/07/15/HexoBlog/" title="下一篇: hexo 博客同步">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/UnityAndroidSDKQuestion1/">Unity 接入 Android SDK，切换黑屏问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/Fleet/">Fleet</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/15/HexoBlog/">hexo 博客同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/《人月神话》读书笔记2/">《人月神话》读书笔记（下）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/FlappyBird/">自制小游戏 —— Flappy Bird</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/《人月神话》读书笔记/">《人月神话》读书笔记（上）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/UnityKnowledgePoint1/">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/Git/">Git 常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/《调试九法》读书笔记/">《调试九法》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/AssetBundleManual1/">U3D AssetBundle 官方文档（翻译版）学习笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/UnityUIDropDown/">Unity UGUI - Dropdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/UnityAndroidSDKQuestion1/">Unity 接入 Android SDK，切换黑屏问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/15/HexoBlog/">hexo 博客同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/《人月神话》读书笔记2/">《人月神话》读书笔记（下）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/FlappyBird/">自制小游戏 —— Flappy Bird</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/《人月神话》读书笔记/">《人月神话》读书笔记（上）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/18/UnityAndroidSDK/">Unity 接入 Android SDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/UnityKnowledgePoint1/">Behaviour.enabled、Behaviour.isActiveAndEnabled、GameObject.activeInHierarchy 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/Git/">Git 常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/《调试九法》读书笔记/">《调试九法》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/AssetBundleManual1/">U3D AssetBundle 官方文档（翻译版）学习笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
