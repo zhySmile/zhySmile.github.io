@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Unity UGUI - Dropdown | zhySmile</title>
+  <title>Unity 之协程 | zhySmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UGUI 组件之 Dropdown 下拉框">
-<meta name="keywords" content="Unity、UI">
+  <meta name="description" content="Unity 之协程">
+<meta name="keywords" content="Unity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity UGUI - Dropdown">
-<meta property="og:url" content="http://yoursite.com/2018/09/05/UnityUIDropDown/index.html">
+<meta property="og:title" content="Unity 之协程">
+<meta property="og:url" content="http://yoursite.com/2018/09/09/unitycoroutine/index.html">
 <meta property="og:site_name" content="zhySmile">
-<meta property="og:description" content="UGUI 组件之 Dropdown 下拉框">
+<meta property="og:description" content="Unity 之协程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-05T15:48:52.698Z">
+<meta property="og:image" content="http://yoursite.com/img/unityCoroutine/1.png">
+<meta property="og:updated_time" content="2018-09-10T16:50:50.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity UGUI - Dropdown">
-<meta name="twitter:description" content="UGUI 组件之 Dropdown 下拉框">
+<meta name="twitter:title" content="Unity 之协程">
+<meta name="twitter:description" content="Unity 之协程">
+<meta name="twitter:image" content="http://yoursite.com/img/unityCoroutine/1.png">
   
     <link rel="alternative" href="/atom.xml" title="zhySmile" type="application/atom+xml">
   
@@ -210,11 +212,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-UnityUIDropDown" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-unitycoroutine" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/09/05/UnityUIDropDown/" class="article-date">
-      <time datetime="2018-09-05T14:55:59.203Z" itemprop="datePublished">2018-09-05</time>
+      <a href="/2018/09/09/unitycoroutine/" class="article-date">
+      <time datetime="2018-09-09T13:15:06.723Z" itemprop="datePublished">2018-09-09</time>
 </a>
     </div>
   
@@ -227,7 +229,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unity UGUI - Dropdown
+      Unity 之协程
     </h1>
   
 
@@ -242,7 +244,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity、UI/">Unity、UI</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -252,12 +254,116 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>UGUI 组件之 Dropdown 下拉框<br><a id="more"></a></p>
-<p>前些日子在工作中遇到一个 Bug，是一个下拉框，第一次打开界面，点击下拉框，会触发正常的下拉框点击事件，不会触发到下拉框展开之后层级底下的按钮点击事件。但是当切换别的界面之后，再点击下拉框，下拉框点击事件就不会再触发，相反，下层按钮点击事件会触发。</p>
-<p>看到这个 bug，首先想到的就是有可能是层级问题导致。然后去查代码，发现这个下拉框的实现是通过 UGUI 的 Dropdown 组件。之前并没有用过这个组件，对它的实现原理不了解。去复现问题发现原本下拉列表上没有 Canvas 组件，但是在下拉框展开之后，会给下拉列表添上一个 Canvas 组件，并且其 sortingOrder 很大，为30000。当打开别的界面之后，再点击下拉列表，其 sortingOrder 变小了，查找发现等于其父物体上 Canvas sortingOrder 的值。如此一来，就导致了层级错误，触发事件出问题。</p>
-<p>接着我去查看 Dropdown 的源码，在第一次 Dropdown Show 的时候会去初始化下拉列表，添加 Canvas ，设置 sortingOrder = 30000，并且生成一个 Blocker 在根 Canvas 下，设置其 sortingOrder = (Dropdown Canvas).sortingOrder - 1，即 29999。我猜想这么设值的原因是，3000 足够大，能够保证下拉框是最上层，添加 Blocker 是为了防止点击到下层物体。</p>
-<p>但是问题出在，我们的 UI 会根据界面展示时机去设置其 Canvas 的 sortingOrder，当打开别的界面返回的时候，会给这个下拉框的 sortingOrder 设置为和根 Canvas 相同的值，打开下拉框的时候，再次生成 Blocker 并设置 sortingOrder，就会造成遮挡功能失效，Bug 出现。</p>
-<p>最终的解决方案是必要的时候手动再去设置下拉列表的 sortingOrder。</p>
+        <p>Unity 之协程<br><a id="more"></a></p>
+<ol>
+<li><p>什么是协程<br>协程即协同程序，是一种特殊的函数，能够中断执行当前的代码，直到中断指令结束后再接着执行之前的代码。</p>
+</li>
+<li><p>协程的作用</p>
+<ol>
+<li>延时等待一段时间执行代码</li>
+<li>等某个操作完成之后再执行后面的代码</li>
+</ol>
+</li>
+<li><p>协程的原理<br>Unity 在每一帧都会去处理 GameObject 里带有的 Coroutine Function, 直到 Coroutine Function 被执行完毕. 当一个 Coroutine 开始启动时, 它会执行到遇到 yield 为止, 遇到 yield 的时候 Coroutine 会暂停执行, 直到满足 yield 语句的条件, 会开始执行 yield 语句后面的内容, 直到遇到下一个 yield 为止 … 如此循环直到整个函数结束。<br>Unity 的协程系统基于 C# 的接口 : IEnumerator, 允许为自己的集合类型编写枚举类.<br>迭代器模式是通过 IEnumerator 和 IEnumerable 接口及它们的泛型等价物来封装的。如果某个类型实现了 IEnumerable 接口，就意味着它可以被迭代访问。</p>
+</li>
+</ol>
+<p>IEnumerator 接口定义了以向前方式遍历或枚举集合元素的基本底层协议。声明方式如下：</p>
+<pre><code>public interface IEnumerator
+{
+    object Current { get; }
+    bool MoveNext();
+    void Reset();
+}
+</code></pre><p>MoveNext 将当前元素向前移动到下一个位置，如果集合中没有更多的元素，那么它会返回 false。Current 返回当前位置的元素。在取出第一个元素之前，必须先调用 MoveNext——即使是空集合也支持这个操作。调用 Reset 方法的作用是将位置移动回到起点，允许再一次遍历集合。</p>
+<p>集合并未实现枚举器，而是通过接口 IEnumerable 提供枚举器：</p>
+<pre><code>public interface IEnumerable
+{
+    IEnumerator GetEnumerator();
+}
+</code></pre><p>通过定义一个返回枚举器的方法，IEnumerable 实现了将迭代器逻辑转交由另一类完成的灵活性。这意味着多个使用者可以同时遍历集合，而不会互相干扰。IEnumerable 可以看作是 “IEnumerator 的提供者”,它是集合类需要实现的最基础接口。</p>
+<p>IEnumerator 和 IEnumerator 用法：</p>
+<pre><code>string s = &quot;Hello&quot;;
+IEnumerator rator = s.GetEnumerator();
+while (rator.MoveNext())
+{
+    char c = (char)rator.Current;
+    Debug.Log(c);
+}
+</code></pre><p>输出结果：<br><img src="/img/unityCoroutine/1.png" alt="">  </p>
+<p>我们很少采用这种直接调用枚举器的方法，因为 C# 提供了一个快捷语法：foreach 语句。下面是使用 foreach 语句重写的具有相同效果的示例：</p>
+<pre><code>string s = &quot;Hello&quot;;
+foreach (char c in s)
+{
+    Debug.Log(c);
+}
+</code></pre><p>返回另一个集合的枚举器就是调用内部集合的 GetEnumerator。然而，这种方法仅仅适合一些最简单的情况，那就是内部集合的元素正好是所需要的类型。更好的方法是使用 C# 的 yield return 语句编写迭代器。迭代器是 C# 语言的一个特性，它能够协助完成集合编写，与 foreach 语句协助完成集合遍历的方式是一样的。迭代器会自动处理 IEnumerable 和 IEnumerator 或者它们的泛型类的实现。</p>
+<pre><code>public class MyCollectiion:IEnumerable
+{
+    int[] data = { 1, 2, 3 };
+    public IEnumerator GetEnumerator()
+    {
+        foreach (int i in data)
+        {
+            yield return i;
+        }
+    }
+}
+</code></pre><p>迭代器用内置的状态机去跟踪当前个下一个元素。每次遇到新的 yield return 语句是，都会返回值。然后，当下一次迭代开始的时候，会紧接着上一个 yield return 语句之后执行。</p>
+<ol>
+<li>实现 WaitForMilliSeconds</li>
+</ol>
+<p>以下为实现 WaitForMilliSeconds：</p>
+<pre><code>private void Start()
+{
+    StartCoroutine(TestWaitForMilliSecondsCoroutine(1000));
+}
+
+private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
+{
+    yield return WaitForMilliSeconds( milliseconds);
+}
+
+private IEnumerator WaitForMilliSeconds(double milliseconds)
+{
+    double start = DateTime.Now.TimeOfDay.TotalMilliseconds;
+    while (DateTime.Now.TimeOfDay.TotalMilliseconds &lt; start + milliseconds)
+    {
+        yield return null;
+    }
+}
+</code></pre><ol>
+<li>协程是否可以使用 try catch 捕获异常</li>
+</ol>
+<p>测试代码：</p>
+<pre><code>private IEnumerator TestCoroutineTryCatch(double milliseconds)
+{
+    try
+    {
+        yield return WaitForMilliSeconds(milliseconds);
+    }
+    catch (Exception e)
+    {
+        Debug.Log(e);
+    }
+}
+</code></pre><p>此段代码编译不能通过，“无法在包含 catch 子句的 Try 块体中生成值”。</p>
+<p>但是 yield return 不包含在 try-catch 语句内是可以的</p>
+<pre><code>private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
+{
+    yield return WaitForMilliSeconds(milliseconds);
+    try
+    {
+        List&lt;int&gt; tList = new List&lt;int&gt;();
+        Debug.Log(tList[1]);
+    }
+    catch (Exception e)
+    {
+        Debug.Log(e);
+    }
+}
+</code></pre><ol>
+<li>本文参考来源<br>&lt;&lt;果壳中的 C#&gt;&gt;</li>
+</ol>
 
       
       
@@ -313,13 +419,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/09/05/UnityUIDropDown/">Unity UGUI - Dropdown</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/09/unitycoroutine/">Unity 之协程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
-        <p><span>发布时间:</span>2018年09月05日 - 22时55分</p>
-        <p><span>最后更新:</span>2018年09月05日 - 23时48分</p>
+        <p><span>发布时间:</span>2018年09月09日 - 21时15分</p>
+        <p><span>最后更新:</span>2018年09月11日 - 00时50分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/09/05/UnityUIDropDown/" title="Unity UGUI - Dropdown">http://yoursite.com/2018/09/05/UnityUIDropDown/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/05/UnityUIDropDown/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/09/unitycoroutine/" title="Unity 之协程">http://yoursite.com/2018/09/09/unitycoroutine/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/09/unitycoroutine/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -332,18 +438,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/09/09/unitycoroutine/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Unity 之协程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/22/UnityAndroidSDKQuestion1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Unity 接入 Android SDK，切换黑屏问题</div>
+    <a href="/2018/09/05/UnityUIDropDown/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity UGUI - Dropdown</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -420,13 +517,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/09/09/unitycoroutine/" title="上一篇: Unity 之协程">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/07/22/UnityAndroidSDKQuestion1/" title="下一篇: Unity 接入 Android SDK，切换黑屏问题">
+            <a href="/2018/09/05/UnityUIDropDown/" title="下一篇: Unity UGUI - Dropdown">
                 <i class="fa fa-angle-right"></i>
             </a>
         
