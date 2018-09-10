@@ -14,7 +14,7 @@
 <meta property="og:description" content="Unity 之协程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/unityCoroutine/1.png">
-<meta property="og:updated_time" content="2018-09-10T16:50:50.102Z">
+<meta property="og:updated_time" content="2018-09-10T16:55:09.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity 之协程">
 <meta name="twitter:description" content="Unity 之协程">
@@ -255,18 +255,10 @@
       
           
         <p>Unity 之协程<br><a id="more"></a></p>
-<ol>
-<li><p>什么是协程<br>协程即协同程序，是一种特殊的函数，能够中断执行当前的代码，直到中断指令结束后再接着执行之前的代码。</p>
-</li>
-<li><p>协程的作用</p>
-<ol>
-<li>延时等待一段时间执行代码</li>
-<li>等某个操作完成之后再执行后面的代码</li>
-</ol>
-</li>
-<li><p>协程的原理<br>Unity 在每一帧都会去处理 GameObject 里带有的 Coroutine Function, 直到 Coroutine Function 被执行完毕. 当一个 Coroutine 开始启动时, 它会执行到遇到 yield 为止, 遇到 yield 的时候 Coroutine 会暂停执行, 直到满足 yield 语句的条件, 会开始执行 yield 语句后面的内容, 直到遇到下一个 yield 为止 … 如此循环直到整个函数结束。<br>Unity 的协程系统基于 C# 的接口 : IEnumerator, 允许为自己的集合类型编写枚举类.<br>迭代器模式是通过 IEnumerator 和 IEnumerable 接口及它们的泛型等价物来封装的。如果某个类型实现了 IEnumerable 接口，就意味着它可以被迭代访问。</p>
-</li>
-</ol>
+<h1 id="1-什么是协程"><a href="#1-什么是协程" class="headerlink" title="1.什么是协程"></a>1.什么是协程</h1><p>协程即协同程序，是一种特殊的函数，能够中断执行当前的代码，直到中断指令结束后再接着执行之前的代码。</p>
+<h1 id="2-协程的作用"><a href="#2-协程的作用" class="headerlink" title="2.协程的作用"></a>2.协程的作用</h1><pre><code>1. 延时等待一段时间执行代码
+2. 等某个操作完成之后再执行后面的代码
+</code></pre><h1 id="3-协程的原理"><a href="#3-协程的原理" class="headerlink" title="3.协程的原理"></a>3.协程的原理</h1><p>Unity 在每一帧都会去处理 GameObject 里带有的 Coroutine Function, 直到 Coroutine Function 被执行完毕. 当一个 Coroutine 开始启动时, 它会执行到遇到 yield 为止, 遇到 yield 的时候 Coroutine 会暂停执行, 直到满足 yield 语句的条件, 会开始执行 yield 语句后面的内容, 直到遇到下一个 yield 为止 … 如此循环直到整个函数结束。<br>Unity 的协程系统基于 C# 的接口 : IEnumerator, 允许为自己的集合类型编写枚举类.<br>迭代器模式是通过 IEnumerator 和 IEnumerable 接口及它们的泛型等价物来封装的。如果某个类型实现了 IEnumerable 接口，就意味着它可以被迭代访问。</p>
 <p>IEnumerator 接口定义了以向前方式遍历或枚举集合元素的基本底层协议。声明方式如下：</p>
 <pre><code>public interface IEnumerator
 {
@@ -309,10 +301,7 @@ foreach (char c in s)
     }
 }
 </code></pre><p>迭代器用内置的状态机去跟踪当前个下一个元素。每次遇到新的 yield return 语句是，都会返回值。然后，当下一次迭代开始的时候，会紧接着上一个 yield return 语句之后执行。</p>
-<ol>
-<li>实现 WaitForMilliSeconds</li>
-</ol>
-<p>以下为实现 WaitForMilliSeconds：</p>
+<h1 id="4-实现-WaitForMilliSeconds"><a href="#4-实现-WaitForMilliSeconds" class="headerlink" title="4.实现 WaitForMilliSeconds"></a>4.实现 WaitForMilliSeconds</h1><p>以下为实现 WaitForMilliSeconds：</p>
 <pre><code>private void Start()
 {
     StartCoroutine(TestWaitForMilliSecondsCoroutine(1000));
@@ -331,10 +320,7 @@ private IEnumerator WaitForMilliSeconds(double milliseconds)
         yield return null;
     }
 }
-</code></pre><ol>
-<li>协程是否可以使用 try catch 捕获异常</li>
-</ol>
-<p>测试代码：</p>
+</code></pre><h1 id="5-协程是否可以使用-try-catch-捕获异常"><a href="#5-协程是否可以使用-try-catch-捕获异常" class="headerlink" title="5.协程是否可以使用 try catch 捕获异常"></a>5.协程是否可以使用 try catch 捕获异常</h1><p>测试代码：</p>
 <pre><code>private IEnumerator TestCoroutineTryCatch(double milliseconds)
 {
     try
@@ -361,9 +347,7 @@ private IEnumerator WaitForMilliSeconds(double milliseconds)
         Debug.Log(e);
     }
 }
-</code></pre><ol>
-<li>本文参考来源<br>&lt;&lt;果壳中的 C#&gt;&gt;</li>
-</ol>
+</code></pre><h1 id="6-本文参考来源"><a href="#6-本文参考来源" class="headerlink" title="6.本文参考来源"></a>6.本文参考来源</h1><p> &lt;&lt;果壳中的 C#&gt;&gt;</p>
 
       
       
@@ -422,7 +406,7 @@ private IEnumerator WaitForMilliSeconds(double milliseconds)
         <p><span>本文标题:</span><a href="/2018/09/09/unitycoroutine/">Unity 之协程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2018年09月09日 - 21时15分</p>
-        <p><span>最后更新:</span>2018年09月11日 - 00时50分</p>
+        <p><span>最后更新:</span>2018年09月11日 - 00时55分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/09/unitycoroutine/" title="Unity 之协程">http://yoursite.com/2018/09/09/unitycoroutine/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/09/unitycoroutine/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -451,7 +435,7 @@ private IEnumerator WaitForMilliSeconds(double milliseconds)
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-什么是协程"><span class="toc-number">1.</span> <span class="toc-text">1.什么是协程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-协程的作用"><span class="toc-number">2.</span> <span class="toc-text">2.协程的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-协程的原理"><span class="toc-number">3.</span> <span class="toc-text">3.协程的原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-实现-WaitForMilliSeconds"><span class="toc-number">4.</span> <span class="toc-text">4.实现 WaitForMilliSeconds</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-协程是否可以使用-try-catch-捕获异常"><span class="toc-number">5.</span> <span class="toc-text">5.协程是否可以使用 try catch 捕获异常</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-本文参考来源"><span class="toc-number">6.</span> <span class="toc-text">6.本文参考来源</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
