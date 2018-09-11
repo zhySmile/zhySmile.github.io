@@ -14,7 +14,7 @@
 <meta property="og:description" content="Unity 之协程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/unityCoroutine/1.png">
-<meta property="og:updated_time" content="2018-09-10T16:55:09.037Z">
+<meta property="og:updated_time" content="2018-09-11T15:44:13.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity 之协程">
 <meta name="twitter:description" content="Unity 之协程">
@@ -302,25 +302,48 @@ foreach (char c in s)
 }
 </code></pre><p>迭代器用内置的状态机去跟踪当前个下一个元素。每次遇到新的 yield return 语句是，都会返回值。然后，当下一次迭代开始的时候，会紧接着上一个 yield return 语句之后执行。</p>
 <h1 id="4-实现-WaitForMilliSeconds"><a href="#4-实现-WaitForMilliSeconds" class="headerlink" title="4.实现 WaitForMilliSeconds"></a>4.实现 WaitForMilliSeconds</h1><p>以下为实现 WaitForMilliSeconds：</p>
-<pre><code>private void Start()
+<pre><code>public class WaitForMilliSeconds: IEnumerator
 {
-    StartCoroutine(TestWaitForMilliSecondsCoroutine(1000));
-}
+    double MilliSeconds;
 
-private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
-{
-    yield return WaitForMilliSeconds( milliseconds);
-}
-
-private IEnumerator WaitForMilliSeconds(double milliseconds)
-{
-    double start = DateTime.Now.TimeOfDay.TotalMilliseconds;
-    while (DateTime.Now.TimeOfDay.TotalMilliseconds &lt; start + milliseconds)
+    public WaitForMilliSeconds(double milliSeconds)
     {
-        yield return null;
+        MilliSeconds = milliSeconds;
+        _start = DateTime.Now.TimeOfDay.TotalMilliseconds;
+    }
+
+    public object Current
+    {
+        get
+        {
+            return null;
+        }
+    }
+
+    public bool MoveNext()
+    {
+        return DateTime.Now.TimeOfDay.TotalMilliseconds &lt; _start + MilliSeconds;
+    }
+
+    public void Reset()
+    {
+    }
+
+    private double _start;
+}
+</code></pre><p>调用示例：</p>
+<pre><code>public class CoroutineTest : MonoBehaviour
+{
+    private void Start()
+    {
+        StartCoroutine(TestWaitForMilliSecondsCoroutine(1000));
+    }
+    private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
+    {
+        yield return new WaitForMilliSeconds(milliseconds);
     }
 }
-</code></pre><h1 id="5-协程是否可以使用-try-catch-捕获异常"><a href="#5-协程是否可以使用-try-catch-捕获异常" class="headerlink" title="5.协程是否可以使用 try catch 捕获异常"></a>5.协程是否可以使用 try catch 捕获异常</h1><p>测试代码：</p>
+</code></pre><h1 id="5-协程是否可以使用-try-catch-捕获异常"><a href="#5-协程是否可以使用-try-catch-捕获异常" class="headerlink" title="5.协程是否可以使用 try catch 捕获异常"></a>5.协程是否可以使用 try catch 捕获异常</h1><p>测试代码1：</p>
 <pre><code>private IEnumerator TestCoroutineTryCatch(double milliseconds)
 {
     try
@@ -333,21 +356,23 @@ private IEnumerator WaitForMilliSeconds(double milliseconds)
     }
 }
 </code></pre><p>此段代码编译不能通过，“无法在包含 catch 子句的 Try 块体中生成值”。</p>
-<p>但是 yield return 不包含在 try-catch 语句内是可以的</p>
+<p>测试代码2：</p>
 <pre><code>private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
 {
-    yield return WaitForMilliSeconds(milliseconds);
     try
     {
         List&lt;int&gt; tList = new List&lt;int&gt;();
         Debug.Log(tList[1]);
+        yield return WaitForMilliSeconds(milliseconds);
     }
-    catch (Exception e)
+    finally
     {
         Debug.Log(e);
     }
 }
-</code></pre><h1 id="6-本文参考来源"><a href="#6-本文参考来源" class="headerlink" title="6.本文参考来源"></a>6.本文参考来源</h1><p> &lt;&lt;果壳中的 C#&gt;&gt;</p>
+</code></pre><p>yield return 可以包含在 try-finally 语句块中。</p>
+<p>结论：<br>yield return 语句不能出现在带 catch 子句的 try 语句块中，也不能出现在 catch 或 finally 语句块中。出现这些限制的原因是编译器必须将迭代器转换为带有 MoveNext、Current 和 Dispose 成员的普通类，而且转换异常语句块可能会大大增加代码复杂性。<br>但是，可以在只带 finally 语句块的 try 块中使用 yield 语句。<br>当枚举器到达队列末尾或者处理完毕时，finally 语句块就可以执行了。如果提前使用 break 中断循环，那么 foreach 语句会显式地结束枚举器，这是一种正确使用枚举器的方法。</p>
+<h1 id="6-本文参考来源"><a href="#6-本文参考来源" class="headerlink" title="6.本文参考来源"></a>6.本文参考来源</h1><p>《果壳中的 C#》</p>
 
       
       
@@ -406,7 +431,7 @@ private IEnumerator WaitForMilliSeconds(double milliseconds)
         <p><span>本文标题:</span><a href="/2018/09/09/unitycoroutine/">Unity 之协程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张海燕 的个人博客">张海燕</a></p>
         <p><span>发布时间:</span>2018年09月09日 - 21时15分</p>
-        <p><span>最后更新:</span>2018年09月11日 - 00时55分</p>
+        <p><span>最后更新:</span>2018年09月11日 - 23时44分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/09/unitycoroutine/" title="Unity 之协程">http://yoursite.com/2018/09/09/unitycoroutine/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/09/unitycoroutine/　　作者: 张海燕" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
