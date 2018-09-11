@@ -79,28 +79,53 @@ IEnumerator 和 IEnumerator 用法：
 
 以下为实现 WaitForMilliSeconds：
 
-    private void Start()
+    public class WaitForMilliSeconds: IEnumerator
     {
-        StartCoroutine(TestWaitForMilliSecondsCoroutine(1000));
-    }
+        double MilliSeconds;
 
-    private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
-    {
-        yield return WaitForMilliSeconds( milliseconds);
-    }
-
-    private IEnumerator WaitForMilliSeconds(double milliseconds)
-    {
-        double start = DateTime.Now.TimeOfDay.TotalMilliseconds;
-        while (DateTime.Now.TimeOfDay.TotalMilliseconds < start + milliseconds)
+        public WaitForMilliSeconds(double milliSeconds)
         {
-            yield return null;
+            MilliSeconds = milliSeconds;
+            _start = DateTime.Now.TimeOfDay.TotalMilliseconds;
+        }
+
+        public object Current
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public bool MoveNext()
+        {
+            return DateTime.Now.TimeOfDay.TotalMilliseconds < _start + MilliSeconds;
+        }
+
+        public void Reset()
+        {
+        }
+
+        private double _start;
+    }
+
+调用示例：
+
+    public class CoroutineTest : MonoBehaviour
+    {
+        private void Start()
+        {
+            StartCoroutine(TestWaitForMilliSecondsCoroutine(1000));
+        }
+        private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
+        {
+            yield return new WaitForMilliSeconds(milliseconds);
         }
     }
 
 # 5.协程是否可以使用 try catch 捕获异常
 
-测试代码：
+测试代码1：
 
     private IEnumerator TestCoroutineTryCatch(double milliseconds)
     {
@@ -116,22 +141,28 @@ IEnumerator 和 IEnumerator 用法：
 
 此段代码编译不能通过，“无法在包含 catch 子句的 Try 块体中生成值”。
 
-但是 yield return 不包含在 try-catch 语句内是可以的
+测试代码2：
     
     private IEnumerator TestWaitForMilliSecondsCoroutine(double milliseconds)
     {
-        yield return WaitForMilliSeconds(milliseconds);
         try
         {
             List<int> tList = new List<int>();
             Debug.Log(tList[1]);
+            yield return WaitForMilliSeconds(milliseconds);
         }
-        catch (Exception e)
+        finally
         {
             Debug.Log(e);
         }
     }
 
+yield return 可以包含在 try-finally 语句块中。
+
+结论：
+yield return 语句不能出现在带 catch 子句的 try 语句块中，也不能出现在 catch 或 finally 语句块中。出现这些限制的原因是编译器必须将迭代器转换为带有 MoveNext、Current 和 Dispose 成员的普通类，而且转换异常语句块可能会大大增加代码复杂性。
+但是，可以在只带 finally 语句块的 try 块中使用 yield 语句。
+当枚举器到达队列末尾或者处理完毕时，finally 语句块就可以执行了。如果提前使用 break 中断循环，那么 foreach 语句会显式地结束枚举器，这是一种正确使用枚举器的方法。
 
 # 6.本文参考来源 
- <<果壳中的 C#>>
+《果壳中的 C#》
